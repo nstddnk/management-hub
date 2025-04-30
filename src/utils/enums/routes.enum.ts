@@ -1,4 +1,4 @@
 export enum RoutesEnum {
-  MemesTable = '/memes-table',
-  MemesList = '/memes-list',
+  Accounts = '/accounts',
+  Dashboard = '/dashboard',
 }

@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #111521;
+    --text: #fff;
+  }
+
+  :root[class~='dark'] {
+    --background: #0b1121;
+    --text: #ffffff;
+  }
+
+  body {
+    @apply bg-[var(--background)] text-[var(--text)] min-h-screen;
+  }
+}

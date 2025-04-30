@@ -1,18 +1,23 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-
-import { MemesTable } from './pages/MemesTable.tsx'
 import { HeroProvider } from '@/Provider.tsx'
-import { RoutesEnum } from '@/utils/enums/routes.enum.ts'
-import { MemesList } from '@/pages/MemesList.tsx'
+import { Accounts } from './pages/Accounts'
+import { Dashboard } from './pages/Dashboard'
+import { RoutesEnum } from '@/utils/enums/routes.enum'
+import { Navbar } from './components/layout/Navbar'
+import { Layout } from './components/layout/Layout'
+import './styles/global.css'
 
 function App() {
   return (
     <HeroProvider>
-      <Routes>
-        <Route path="/" element={<Navigate to={RoutesEnum.MemesTable} />} />
-        <Route element={<MemesTable />} path={RoutesEnum.MemesTable} />
-        <Route element={<MemesList />} path={RoutesEnum.MemesList} />
-      </Routes>
+      <Navbar />
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Navigate to={RoutesEnum.Dashboard} />} />
+          <Route element={<Accounts />} path={RoutesEnum.Accounts} />
+          <Route element={<Dashboard />} path={RoutesEnum.Dashboard} />
+        </Routes>
+      </Layout>
     </HeroProvider>
   )
 }
