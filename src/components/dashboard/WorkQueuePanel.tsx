@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell } from '@heroui/table'
 import { CircleEllipsis } from 'lucide-react'
+import { DataTable, type DataTableColumn } from '@/components/ui/DataTable'
+import { Button } from '@heroui/button'
 
 type WorkQueueItem = {
   originator: {
@@ -83,11 +84,11 @@ export const WorkQueuePanel = () => {
     )
   }
 
-  const columns = [
+  const columns: DataTableColumn<WorkQueueItem>[] = [
     {
       key: 'originator',
       label: 'ORIGINATOR',
-      render: (item: WorkQueueItem) => (
+      render: (item) => (
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-full bg-[#1E40AF] flex items-center justify-center text-white text-sm">
             {item.originator.initials}
@@ -99,7 +100,7 @@ export const WorkQueuePanel = () => {
     {
       key: 'client',
       label: 'CLIENT/LINE',
-      render: (item: WorkQueueItem) => (
+      render: (item) => (
         <div className="flex flex-col">
           <span className="text-white">{item.client.name}</span>
           <span className="text-[#8E8E8E] text-sm">{item.client.type}</span>
@@ -109,12 +110,12 @@ export const WorkQueuePanel = () => {
     {
       key: 'type',
       label: 'TYPE',
-      render: (item: WorkQueueItem) => <span className="text-white">{item.type}</span>,
+      render: (item) => <span className="text-white">{item.type}</span>,
     },
     {
       key: 'status',
       label: 'STATUS',
-      render: (item: WorkQueueItem) => (
+      render: (item) => (
         <div className="flex items-center gap-2">
           <div
             className={`w-2 h-2 rounded-full ${
@@ -132,29 +133,34 @@ export const WorkQueuePanel = () => {
     {
       key: 'created',
       label: 'CREATED',
-      render: (item: WorkQueueItem) => <span className="text-white">{item.created}</span>,
+      render: (item) => <span className="text-white">{item.created}</span>,
     },
     {
       key: 'actions',
       label: '',
       render: () => (
-        <button className="text-[#8E8E8E] hover:text-white transition-colors rounded-full w-8 h-8 flex items-center justify-center hover:bg-[#1E2737]">
+        <Button
+          isIconOnly
+          variant="light"
+          className="text-[#8E8E8E] hover:text-white transition-colors rounded-full w-8 h-8 min-w-8 min-h-8 p-0 hover:bg-[#1E2737] border-0"
+        >
           <CircleEllipsis className="w-5 h-5" />
-        </button>
+        </Button>
       ),
     },
   ]
 
   return (
-    <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-6">
+    <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-4">
       <h2 className="text-xl font-semibold mb-4 text-white">Work Queue</h2>
 
       {/* Filter Tabs */}
-      <div className="flex gap-2 mb-6">
+      <div className="flex gap-2 mb-4">
         {filterTabs.map((tab) => (
-          <button
+          <Button
             key={tab.label}
-            onClick={() => handleTabClick(tab.label)}
+            onPress={() => handleTabClick(tab.label)}
+            variant="light"
             className={`
               px-4 py-2 rounded-full flex items-center gap-2 transition-colors
               ${
@@ -166,41 +172,11 @@ export const WorkQueuePanel = () => {
           >
             <span>{tab.label}</span>
             <span className="bg-black/20 px-2 rounded-full text-sm">{tab.count}</span>
-          </button>
+          </Button>
         ))}
       </div>
 
-      {/* Table */}
-      <Table
-        aria-label="Work Queue Items"
-        className="min-w-full"
-        removeWrapper
-        classNames={{
-          base: 'overflow-hidden',
-          table: 'min-w-full',
-          thead:
-            'h-6 [&_th]:!bg-[#171F2F] [&>tr:first-child>th:first-child]:rounded-none [&>tr:last-child>th:first-child]:rounded-none [&>tr:first-child>th:last-child]:rounded-none [&>tr:last-child>th:last-child]:rounded-none',
-          tbody: 'bg-transparent',
-          tr: 'odd:bg-[#1e2233] even:bg-[#171F2F] -mx-6',
-          th: '!bg-[#171F2F] text-[#8E8E8E] text-sm font-medium text-left py-1.5 first:pl-6 last:pr-6',
-          td: 'py-2.5 first:pl-6 last:pr-6',
-        }}
-      >
-        <TableHeader>
-          {columns.map((column) => (
-            <TableColumn key={column.key}>{column.label}</TableColumn>
-          ))}
-        </TableHeader>
-        <TableBody items={mockData}>
-          {(item) => (
-            <TableRow key={item.client.name}>
-              {(columnKey) => (
-                <TableCell>{columns.find((col) => col.key === columnKey)?.render(item)}</TableCell>
-              )}
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
+      <DataTable data={mockData} columns={columns} />
     </div>
   )
 }

@@ -33,8 +33,8 @@ const getIndicatorColor = (color: MarketUpdate['color']) => {
 
 export const MarketIntelPanel = () => {
   return (
-    <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-4">
-      <h2 className="text-lg font-semibold mb-4 text-white">Market intelligence</h2>
+    <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-3 max-w-[280px]">
+      <h2 className="text-lg font-semibold mb-3 text-white">Market intelligence</h2>
 
       <div className="flex flex-col gap-2">
         {marketUpdates.map((update) => (
@@ -45,7 +45,7 @@ export const MarketIntelPanel = () => {
             <div
               className={`w-[10px] h-[10px] rounded-full shrink-0 mt-1.5 ${getIndicatorColor(update.color)}`}
             />
-            <span className="text-white text-sm leading-normal">{update.text}</span>
+            <span className="text-white text-sm leading-normal max-w-[200px]">{update.text}</span>
           </div>
         ))}
       </div>
