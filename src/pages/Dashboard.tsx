@@ -8,14 +8,8 @@ export const Dashboard = () => {
   return (
     <div className="p-2 space-y-4">
       <div className="flex gap-4 h-[533px]">
-
-          <WorkQueuePanel />
-
-
-
-          <PortfolioGoalsPanel />
-
-        
+        <WorkQueuePanel />
+        <PortfolioGoalsPanel />
         <div className="w-[17%] h-full space-y-4 flex flex-col justify-between">
           <QuickActionsPanel />
           <MarketIntelPanel />

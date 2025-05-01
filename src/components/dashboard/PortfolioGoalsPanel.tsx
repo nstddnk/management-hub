@@ -2,7 +2,6 @@ import { CurrencyProgressBar } from '../ui/CurrencyProgressBar'
 import { RenewalProgressBar } from '../ui/RenewalProgressBar'
 import { PortfolioProgressBar } from '../ui/PortfolioProgressBar'
 
-
 type PortfolioMetric = {
   label: string
   target: string

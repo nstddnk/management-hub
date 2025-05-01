@@ -9,7 +9,7 @@ type PortfolioProgressBarProps = {
 export const PortfolioProgressBar = ({
   currentValue,
   targetValue,
-  performanceStatus = '-6.8% (GOOD)'
+  performanceStatus = '-6.8% (GOOD)',
 }: PortfolioProgressBarProps) => {
   return (
     <div className="pt-10 pb-8">
@@ -24,14 +24,16 @@ export const PortfolioProgressBar = ({
             {currentValue}%
           </div>
         </div>
-        <div className="bg-[#FDD835] w-[30%]"/>
+        <div className="bg-[#FDD835] w-[30%]" />
         <div className="bg-[#E53935] w-[40%] rounded-r-xl" />
 
         <div className="absolute top-[24px]  left-[30%] -translate-x-1/2 flex flex-col items-center">
           <ArrowIcon color="#48D378" rotate={180} className="w-8 h-6" />
-          <div className="text-[10px] -mt-[7px] text-[#48D378] whitespace-nowrap mt-1">{performanceStatus}</div>
+          <div className="text-[10px] -mt-[7px] text-[#48D378] whitespace-nowrap mt-1">
+            {performanceStatus}
+          </div>
         </div>
       </div>
     </div>
   )
-} 
+}

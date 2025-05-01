@@ -28,4 +28,4 @@ export const RenewalProgressBar = ({ currentValue, targetRange }: RenewalProgres
       </div>
     </div>
   )
-} 
+}

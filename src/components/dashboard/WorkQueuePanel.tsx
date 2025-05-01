@@ -142,7 +142,7 @@ export const WorkQueuePanel = () => {
         <button className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10">
           <MoreVertical className="w-4 h-4 text-white" />
         </button>
-    ),
+      ),
     },
   ]
 
