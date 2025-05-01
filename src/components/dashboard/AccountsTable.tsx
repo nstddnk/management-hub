@@ -1,5 +1,5 @@
 import { DataTable, type DataTableColumn } from '@/components/ui/DataTable'
-import { CircleEllipsis } from 'lucide-react'
+import { MoreVertical } from 'lucide-react'
 import { Button } from '@heroui/button'
 import { InputField } from '@/components/ui/InputField'
 
@@ -40,7 +40,7 @@ const mockData: AccountItem[] = [
     appetite: 'HIGH',
     status: { label: 'Active', type: 'active' },
     triage: 180,
-    winnability: { score: 4, label: 'Very Strong' }
+    winnability: { score: 4, label: 'Very Strong' },
   },
   {
     name: 'Alliance Healthcare Systems',
@@ -54,7 +54,7 @@ const mockData: AccountItem[] = [
     appetite: 'MEDIUM',
     status: { label: 'Under review', type: 'review' },
     triage: 165,
-    winnability: { score: 4, label: 'Strong' }
+    winnability: { score: 4, label: 'Strong' },
   },
   {
     name: 'Maritime Logistics Corp',
@@ -68,7 +68,7 @@ const mockData: AccountItem[] = [
     appetite: 'HIGH',
     status: { label: 'Active', type: 'active' },
     triage: 182,
-    winnability: { score: 4, label: 'Very Strong' }
+    winnability: { score: 4, label: 'Very Strong' },
   },
   {
     name: 'GreenField Energy Ltd',
@@ -82,8 +82,8 @@ const mockData: AccountItem[] = [
     appetite: 'CAUTIOUS',
     status: { label: 'Under review', type: 'review' },
     triage: 158,
-    winnability: { score: 4, label: 'Medium' }
-  }
+    winnability: { score: 4, label: 'Medium' },
+  },
 ]
 
 export const AccountsTable = () => {
@@ -132,10 +132,16 @@ export const AccountsTable = () => {
       key: 'lossRatio',
       label: 'LOSS RATIO',
       render: (item) => (
-        <div className={`px-2 py-1 rounded-full inline-flex items-center justify-center
-          ${item.lossRatio.color === 'green' ? 'bg-[#16A34A]/20 text-[#16A34A]' : 
-            item.lossRatio.color === 'yellow' ? 'bg-[#F5D90A]/20 text-[#F5D90A]' : 
-            'bg-[#EF4444]/20 text-[#EF4444]'}`}>
+        <div
+          className={`px-2 py-1 rounded-full inline-flex items-center justify-center
+          ${
+            item.lossRatio.color === 'green'
+              ? 'bg-[#16A34A]/20 text-[#16A34A]'
+              : item.lossRatio.color === 'yellow'
+                ? 'bg-[#F5D90A]/20 text-[#F5D90A]'
+                : 'bg-[#EF4444]/20 text-[#EF4444]'
+          }`}
+        >
           {item.lossRatio.value}%
         </div>
       ),
@@ -144,10 +150,7 @@ export const AccountsTable = () => {
       key: 'appetite',
       label: 'APPETITE',
       render: (item) => (
-        <div className={`px-3 py-1 rounded-full bg-[#1E2737] text-white text-sm flex items-center justify-center min-w-[100px]
-          ${item.appetite === 'HIGH' ? 'bg-[#1E2737]' : 
-            item.appetite === 'MEDIUM' ? 'bg-[#1E2737]' : 
-            'bg-[#1E2737] text-[#EF4444]'}`}>
+        <div className="px-3 py-1 rounded-full bg-[#1A2747] text-white text-sm flex items-center justify-center min-w-[100px]">
           {item.appetite}
         </div>
       ),
@@ -157,9 +160,11 @@ export const AccountsTable = () => {
       label: 'STATUS',
       render: (item) => (
         <div className="flex items-center gap-2">
-          <div className={`w-2 h-2 rounded-full ${
-            item.status.type === 'active' ? 'bg-[#16A34A]' : 'bg-[#F5D90A]'
-          }`} />
+          <div
+            className={`w-2 h-2 rounded-full ${
+              item.status.type === 'active' ? 'bg-[#16A34A]' : 'bg-[#F5D90A]'
+            }`}
+          />
           <span className="text-white">{item.status.label}</span>
         </div>
       ),
@@ -200,13 +205,9 @@ export const AccountsTable = () => {
       key: 'actions',
       label: '',
       render: () => (
-        <Button
-          isIconOnly
-          variant="light"
-          className="text-[#8E8E8E] hover:text-white transition-colors rounded-full w-8 h-8 min-w-8 min-h-8 p-0 hover:bg-[#1E2737] bg-transparent"
-        >
-          <CircleEllipsis className="w-5 h-5" />
-        </Button>
+        <button className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10">
+          <MoreVertical className="w-4 h-4 text-white" />
+        </button>
       ),
     },
   ]
@@ -214,7 +215,7 @@ export const AccountsTable = () => {
   return (
     <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-4">
       <div className="flex items-center gap-6 mb-4">
-        <h2 className="text-xl font-semibold text-white">My accounts</h2>
+        <h2 className="text-2xl font-medium text-white mb-5">My accounts</h2>
         <div className="flex items-center gap-2">
           <InputField
             name="search"

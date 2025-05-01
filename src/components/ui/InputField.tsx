@@ -46,10 +46,11 @@ export const InputField = ({
         variant={variant}
         radius={radius}
         classNames={{
-          base: "text-white",
-          input: "bg-[#171F2F] text-white !text-white",
-          innerWrapper: "bg-[#171F2F]",
-          inputWrapper: "bg-[#171F2F] border-0 hover:border-0 focus:border-0 active:border-0 data-[hover=true]:bg-[#171F2F] data-[focus=true]:bg-[#171F2F] data-[focus-visible=true]:bg-[#171F2F] data-[focus-visible=true]:outline-none data-[focus-visible=true]:ring-0"
+          base: 'text-white',
+          input: 'bg-[#171F2F] text-white !text-white',
+          innerWrapper: 'bg-[#171F2F]',
+          inputWrapper:
+            'bg-[#171F2F] border-0 hover:border-0 focus:border-0 active:border-0 data-[hover=true]:bg-[#171F2F] data-[focus=true]:bg-[#171F2F] data-[focus-visible=true]:bg-[#171F2F] data-[focus-visible=true]:outline-none data-[focus-visible=true]:ring-0',
         }}
         className={`${errorMessage ? 'border-red-500' : ''} ${inputClassName}`}
       />

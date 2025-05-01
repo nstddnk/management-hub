@@ -13,10 +13,10 @@ type DataTableProps<T> = {
   className?: string
 }
 
-export const DataTable = <T extends Record<string, any>>({ 
-  data, 
+export const DataTable = <T extends Record<string, any>>({
+  data,
   columns,
-  className = ''
+  className = '',
 }: DataTableProps<T>) => {
   return (
     <Table
@@ -27,17 +27,17 @@ export const DataTable = <T extends Record<string, any>>({
         base: 'overflow-hidden',
         table: 'min-w-full',
         thead:
-          'h-6 [&_th]:!bg-[#171F2F] [&>tr:first-child>th:first-child]:rounded-none [&>tr:last-child>th:first-child]:rounded-none [&>tr:first-child>th:last-child]:rounded-none [&>tr:last-child>th:last-child]:rounded-none',
+          'h-6 [&_th]:!bg-[#232838] [&>tr:first-child>th:first-child]:rounded-none [&>tr:last-child>th:first-child]:rounded-none [&>tr:first-child>th:last-child]:rounded-none [&>tr:last-child>th:last-child]:rounded-none',
         tbody: 'bg-transparent',
-        tr: 'even:bg-[#1e2233] odd:bg-[#171F2F] -mx-6',
-        th: '!bg-[#171F2F] text-[#8E8E8E] text-sm font-medium text-left py-1.5 first:pl-6 last:pr-6',
+        tr: 'even:bg-[#232838] odd:bg-[#1e2233] -mx-6',
+        th: '!bg-[#232838] text-[#8E8E8E] text-sm font-medium text-left py-1.5 first:pl-6 last:pr-6',
         td: 'py-2.5 first:pl-6 last:pr-6',
       }}
     >
       <TableHeader>
         {columns.map((column) => (
-          <TableColumn 
-            key={column.key} 
+          <TableColumn
+            key={column.key}
             className={`${column.align === 'right' ? 'text-right pr-[20px]' : ''}`}
           >
             {column.label}
@@ -55,4 +55,4 @@ export const DataTable = <T extends Record<string, any>>({
       </TableBody>
     </Table>
   )
-} 
+}

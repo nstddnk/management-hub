@@ -44,7 +44,6 @@ export const Navbar = () => {
 
   return (
     <div className="flex flex-col w-full">
-     
       <div className="w-full border-b-[0.5px] border-[#232736]">
         <div className="max-w-[1920px] mx-auto">
           <div className="flex justify-between items-center h-20 px-2 md:px-4 lg:px-6">
@@ -65,7 +64,6 @@ export const Navbar = () => {
         </div>
       </div>
 
-     
       <div className="w-full">
         <div className="max-w-[1920px] mx-auto">
           <div className="flex items-center justify-between w-full px-2 md:px-4 lg:px-6 py-4">
@@ -97,7 +95,6 @@ export const Navbar = () => {
               })}
             </div>
 
-      
             <div className="flex-shrink-0 flex items-center gap-2 ml-2">
               <Button
                 onPress={() => handleScroll('left')}

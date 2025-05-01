@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CircleEllipsis } from 'lucide-react'
+import { MoreVertical } from 'lucide-react'
 import { DataTable, type DataTableColumn } from '@/components/ui/DataTable'
 import { Button } from '@heroui/button'
 
@@ -139,30 +139,26 @@ export const WorkQueuePanel = () => {
       key: 'actions',
       label: '',
       render: () => (
-        <Button
-          isIconOnly
-          variant="light"
-          className="text-[#8E8E8E] hover:text-white transition-colors rounded-full w-8 h-8 min-w-8 min-h-8 p-0 hover:bg-[#1E2737] border-0"
-        >
-          <CircleEllipsis className="w-5 h-5" />
-        </Button>
+        <button className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10">
+          <MoreVertical className="w-4 h-4 text-white" />
+        </button>
       ),
     },
   ]
 
   return (
     <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-4">
-      <h2 className="text-xl font-semibold mb-4 text-white">Work Queue</h2>
+      <h2 className="text-2xl font-medium text-white mb-5">Work Queue</h2>
 
       {/* Filter Tabs */}
-      <div className="flex gap-2 mb-4">
+      <div className="flex flex-wrap gap-2 mb-4">
         {filterTabs.map((tab) => (
           <Button
             key={tab.label}
             onPress={() => handleTabClick(tab.label)}
             variant="light"
             className={`
-              px-4 py-2 rounded-full flex items-center gap-2 transition-colors
+              px-3 md:px-4 py-2 rounded-full flex items-center gap-2 transition-colors text-sm md:text-base whitespace-nowrap
               ${
                 tab.isActive
                   ? 'bg-[#4B7BF9] text-white'
@@ -176,7 +172,12 @@ export const WorkQueuePanel = () => {
         ))}
       </div>
 
-      <DataTable data={mockData} columns={columns} />
+      {/* Table wrapper with horizontal scroll */}
+      <div className="overflow-x-auto -mx-4 px-4">
+        <div className="min-w-[800px]">
+          <DataTable data={mockData} columns={columns} />
+        </div>
+      </div>
     </div>
   )
 }

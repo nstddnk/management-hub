@@ -26,10 +26,10 @@ const quickActions: QuickAction[] = [
 
 export const QuickActionsPanel = () => {
   return (
-    <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-3 max-w-[280px]">
-      <h2 className="text-lg font-semibold mb-3 text-white">Quick actions</h2>
+    <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-3 w-full lg:max-w-[280px]">
+      <h2 className="text-2xl leading-normal font-extralight mb-3 text-white">Quick actions</h2>
 
-      <div className="flex flex-col gap-2">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-1 gap-2">
         {quickActions.map((action) => (
           <Button
             key={action.label}
@@ -37,7 +37,7 @@ export const QuickActionsPanel = () => {
             color="primary"
             variant="solid"
             radius="full"
-            className="w-full h-9 text-base font-medium"
+            className="w-full py-2 md:py-2.5 text-sm md:text-base font-medium"
           >
             {action.label}
           </Button>
