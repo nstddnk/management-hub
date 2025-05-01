@@ -31,7 +31,7 @@ export const DataTable = <T extends Record<string, any>>({
         tbody: 'bg-transparent',
         tr: 'even:bg-[#232838] odd:bg-[#1e2233] -mx-6',
         th: '!bg-[#232838] text-[#8E8E8E] text-sm font-medium text-left py-1.5 first:pl-6 last:pr-6',
-        td: 'py-2.5 first:pl-6 last:pr-6',
+        td: 'py-[0.55rem] first:pl-6 last:pr-6',
       }}
     >
       <TableHeader>

@@ -11,7 +11,7 @@ export const RenewalProgressBar = ({ currentValue, targetRange }: RenewalProgres
       <div className="relative flex h-6">
         <div className="bg-[#E53935] w-[15%] rounded-l-xl"></div>
         <div className="bg-[#FDD835] w-[85%] rounded-r-xl"></div>
-        <div className="absolute left-[100px] -top-4  mt-px flex flex-col items-center justify-between">
+        <div className="absolute left-[40%] -top-4  mt-px flex flex-col items-center justify-between">
           <div className="text-[10px] text-[#8E8E8E]">
             TG:{targetRange.min}-{targetRange.max}%
           </div>

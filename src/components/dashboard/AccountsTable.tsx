@@ -215,7 +215,7 @@ export const AccountsTable = () => {
   return (
     <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-4">
       <div className="flex items-center gap-6 mb-4">
-        <h2 className="text-2xl font-medium text-white mb-5">My accounts</h2>
+        <h2 className="text-2xl leading-normal font-extralight text-white">My accounts</h2>
         <div className="flex items-center gap-2">
           <InputField
             name="search"

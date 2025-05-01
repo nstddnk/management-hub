@@ -142,13 +142,13 @@ export const WorkQueuePanel = () => {
         <button className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10">
           <MoreVertical className="w-4 h-4 text-white" />
         </button>
-      ),
+    ),
     },
   ]
 
   return (
-    <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-4">
-      <h2 className="text-2xl font-medium text-white mb-5">Work Queue</h2>
+    <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-4 w-[66%] h-full">
+      <h2 className="text-2xl leading-normal font-extralight mb-3 text-white">Work Queue</h2>
 
       <div className="flex flex-wrap gap-2 mb-4">
         {filterTabs.map((tab) => (
