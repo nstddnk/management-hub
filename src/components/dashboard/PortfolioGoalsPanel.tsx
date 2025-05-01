@@ -1,5 +1,6 @@
 import { CurrencyProgressBar } from '../ui/CurrencyProgressBar'
-
+import { RenewalProgressBar } from '../ui/RenewalProgressBar'
+import { PortfolioProgressBar } from '../ui/PortfolioProgressBar'
 type PortfolioMetric = {
   label: string
   target: string
@@ -40,79 +41,6 @@ const metrics: PortfolioMetric[] = [
   },
 ]
 
-type ProgressBarProps = {
-  currentValue: number
-  targetValue: number
-  goodThreshold: number
-  warningThreshold: number
-}
-
-const ProgressBar = ({
-  currentValue,
-  targetValue,
-  goodThreshold,
-  warningThreshold,
-}: ProgressBarProps) => {
-  return (
-    <div className="flex flex-col gap-2">
-     
-      <div className="flex items-center gap-2">
-        <span className="text-xs text-[#8E8E8E]">Target: {targetValue}%</span>
-        <span className="text-xs text-[#48D378]">{currentValue}% (GOOD)</span>
-      </div>
-      <div className="h-6 rounded-xl overflow-hidden relative">
-  
-        <div className="flex h-full w-full">
-          <div className="bg-[#43A047] h-full" style={{ width: `${goodThreshold}%` }} />
-          <div
-            className="bg-[#FDD835] h-full"
-            style={{ width: `${warningThreshold - goodThreshold}%` }}
-          />
-          <div className="bg-[#E53935] h-full flex-1" />
-        </div>
-        <div className="absolute inset-0">
-          <div
-            className="h-full bg-[#43A047] flex items-center justify-center text-white text-xs font-medium"
-            style={{ width: `${currentValue}%` }}
-          >
-            {currentValue}%
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-type RenewalProgressBarProps = {
-  currentValue: number
-  targetRange: { min: number; max: number }
-}
-
-const RenewalProgressBar = ({ currentValue, targetRange }: RenewalProgressBarProps) => {
-  return (
-    <div className="pt-6 pb-8">
-      <div className="relative flex h-6">
-        <div className="bg-[#E53935] w-[15%] rounded-l-xl"></div>
-        <div className="bg-[#FDD835] w-[85%] rounded-r-xl"></div>
-        <div className="absolute left-[100px] -top-4 gap-[0.5rem] -mt-2 flex flex-col items-center justify-between">
-          <div className=" text-xs text-[#8E8E8E]">
-            TG:{targetRange.min}-{targetRange.max}%
-          </div>
-
-          <div className="bg-[#48D378] h-6 text-xs text-white flex items-center justify-center w-[50%]">
-            {currentValue}%
-          </div>
-
-          <div className="flex items-center justify-center flex-col">
-            <div className="w-0 h-0 border-l-[12px] border-r-[12px] border-b-[15px] border-l-transparent border-r-transparent border-b-[#48D378]" />
-            <div className="text-[#48D378] text-xs whitespace-nowrap mt-1">ON TARGET</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 const MetricLabel = ({ label }: { label: string }) => (
   <div className="flex flex-col gap-1">
     <span className="text-[#8E8E8E] text-xs">{label}</span>
@@ -128,11 +56,10 @@ export const PortfolioGoalsPanel = () => {
           <div key={metric.label} className="space-y-2">
             <MetricLabel label={metric.label} />
             {metric.variant === 'loss-ratio' && (
-              <ProgressBar
+              <PortfolioProgressBar
                 currentValue={metric.current}
                 targetValue={Number(metric.target)}
-                goodThreshold={50}
-                warningThreshold={70}
+                performanceStatus="-6.8% (GOOD)"
               />
             )}
             {metric.variant === 'renewal' && (

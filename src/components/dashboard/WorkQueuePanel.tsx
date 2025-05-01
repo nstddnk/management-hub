@@ -150,7 +150,6 @@ export const WorkQueuePanel = () => {
     <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-4">
       <h2 className="text-2xl font-medium text-white mb-5">Work Queue</h2>
 
-      {/* Filter Tabs */}
       <div className="flex flex-wrap gap-2 mb-4">
         {filterTabs.map((tab) => (
           <Button
@@ -172,7 +171,6 @@ export const WorkQueuePanel = () => {
         ))}
       </div>
 
-      {/* Table wrapper with horizontal scroll */}
       <div className="overflow-x-auto -mx-4 px-4">
         <div className="min-w-[800px]">
           <DataTable data={mockData} columns={columns} />
