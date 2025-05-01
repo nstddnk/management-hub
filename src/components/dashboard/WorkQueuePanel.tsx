@@ -147,15 +147,18 @@ export const WorkQueuePanel = () => {
   ]
 
   return (
-    <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-4 w-[66%] h-full">
+    <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-4 w-[66%] h-full" role="region" aria-label="Work Queue">
       <h2 className="text-2xl leading-normal font-extralight mb-3 text-white">Work Queue</h2>
 
-      <div className="flex flex-wrap gap-2 mb-4">
+      <div className="flex flex-wrap gap-2 mb-4" role="tablist" aria-label="Work queue filters">
         {filterTabs.map((tab) => (
           <Button
             key={tab.label}
             onPress={() => handleTabClick(tab.label)}
             variant="light"
+            role="tab"
+            aria-selected={tab.isActive}
+            aria-controls={`${tab.label}-panel`}
             className={`
               px-3 md:px-4 py-2 rounded-full flex items-center gap-2 transition-colors text-sm md:text-base whitespace-nowrap
               ${
@@ -166,12 +169,12 @@ export const WorkQueuePanel = () => {
             `}
           >
             <span>{tab.label}</span>
-            <span className="bg-black/20 px-2 rounded-full text-sm">{tab.count}</span>
+            <span className="bg-black/20 px-2 rounded-full text-sm" aria-label={`${tab.count} items`}>{tab.count}</span>
           </Button>
         ))}
       </div>
 
-      <div className="overflow-x-auto -mx-4 px-4">
+      <div className="overflow-x-auto -mx-4 px-4" role="tabpanel" aria-labelledby="work-queue-content">
         <div className="min-w-[800px]">
           <DataTable data={mockData} columns={columns} />
         </div>

@@ -43,11 +43,11 @@ export const Navbar = () => {
   }
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full" role="navigation" aria-label="Main navigation">
       <div className="w-full border-b-[0.5px] border-[#232736]">
         <div className="max-w-[1920px] mx-auto">
           <div className="flex justify-between items-center h-20 px-2 md:px-4 lg:px-6">
-            <div className="text-2xl font-normal">Hi Arthur, welcome! You have 12 open tasks.</div>
+            <div className="text-2xl font-normal" role="status">Hi Arthur, welcome! You have 12 open tasks.</div>
             <div className="flex items-center gap-3">
               <InputField
                 name="search"
@@ -55,9 +55,15 @@ export const Navbar = () => {
                 showLabel={false}
                 radius="full"
                 inputClassName="w-[250px] md:w-[300px] lg:w-[400px] h-[40px] text-white placeholder-gray-400"
+                aria-label="Global search"
               />
-              <div className="w-10 h-10 rounded-full bg-[#1E40AF] flex items-center justify-center text-xl font-light text-white">
-                AR
+              <div 
+                className="w-10 h-10 rounded-full bg-[#1E40AF] flex items-center justify-center text-xl font-light text-white"
+                role="button"
+                aria-label="User profile"
+                tabIndex={0}
+              >
+                A
               </div>
             </div>
           </div>
@@ -70,6 +76,8 @@ export const Navbar = () => {
             <div
               ref={scrollContainerRef}
               className="flex-1 flex items-center space-x-2 overflow-x-auto pr-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+              role="tablist"
+              aria-label="Navigation tabs"
             >
               {navItems.map(({ href, label, icon: Icon }) => {
                 const isActive = location.pathname === href
@@ -77,6 +85,9 @@ export const Navbar = () => {
                   <Link
                     key={href}
                     href={href}
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-controls={`${label}-panel`}
                     className={`
                       flex items-center gap-2 px-4 py-2 rounded-full border whitespace-nowrap transition-all duration-150
                       ${
@@ -86,9 +97,7 @@ export const Navbar = () => {
                       }
                     `}
                   >
-                    <Icon
-                      className={`w-5 h-5 flex-shrink-0 ${isActive ? 'text-white' : 'text-[#60A5FA]'}`}
-                    />
+                    <Icon aria-hidden="true" />
                     <span className="text-sm font-medium">{label}</span>
                   </Link>
                 )
@@ -101,16 +110,18 @@ export const Navbar = () => {
                 variant="light"
                 isIconOnly
                 className="w-10 h-10 flex items-center justify-center rounded-full border bg-[#0A0F1A] border-[#1E2737] text-[#60A5FA] hover:bg-[#1E2737] transition-colors"
+                aria-label="Scroll navigation left"
               >
-                <ArrowLeftIcon className="w-5 h-5" />
+                <ArrowLeftIcon className="w-5 h-5" aria-hidden="true" />
               </Button>
               <Button
                 onPress={() => handleScroll('right')}
                 variant="light"
                 isIconOnly
                 className="w-10 h-10 flex items-center justify-center rounded-full border bg-[#0A0F1A] border-[#1E2737] text-[#60A5FA] hover:bg-[#1E2737] transition-colors"
+                aria-label="Scroll navigation right"
               >
-                <ArrowRightIcon className="w-5 h-5" />
+                <ArrowRightIcon className="w-5 h-5" aria-hidden="true" />
               </Button>
             </div>
           </div>

@@ -205,7 +205,10 @@ export const AccountsTable = () => {
       key: 'actions',
       label: '',
       render: () => (
-        <button className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10">
+        <button 
+          className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10"
+          aria-label="More actions"
+        >
           <MoreVertical className="w-4 h-4 text-white" />
         </button>
       ),
@@ -223,28 +226,33 @@ export const AccountsTable = () => {
             showLabel={false}
             radius="full"
             inputClassName="w-[250px] md:w-[300px] lg:w-[400px] h-[40px] text-white placeholder-gray-400 bg-[#171F2F]"
+            aria-label="Search accounts"
           />
           <Button
             variant="light"
             className="px-4 py-2 rounded-full bg-transparent text-[#4B7BF9] border border-[#4B7BF9] hover:bg-[#1E2737] transition-colors"
+            aria-label="Filter accounts"
           >
             Filter
           </Button>
           <Button
             variant="light"
             className="px-4 py-2 rounded-full bg-transparent text-[#4B7BF9] border border-[#4B7BF9] hover:bg-[#1E2737] transition-colors"
+            aria-label="Sort accounts"
           >
             Sort
           </Button>
           <Button
             variant="light"
             className="px-4 py-2 rounded-full bg-transparent text-[#4B7BF9] border border-[#4B7BF9] hover:bg-[#1E2737] transition-colors"
+            aria-label="Group accounts"
           >
             Group
           </Button>
           <Button
             variant="solid"
             className="px-4 py-2 rounded-full bg-[#4B7BF9] text-white hover:bg-[#4B7BF9]/90 transition-colors border border-[#4B7BF9]"
+            aria-label="Create new account"
           >
             + New
           </Button>

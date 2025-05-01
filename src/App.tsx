@@ -3,14 +3,12 @@ import { HeroProvider } from '@/Provider.tsx'
 import { Accounts } from './pages/Accounts'
 import { Dashboard } from './pages/Dashboard'
 import { RoutesEnum } from '@/utils/enums/routes.enum'
-import { Navbar } from './components/layout/Navbar'
 import { Layout } from './components/layout/Layout'
 import './styles/global.css'
 
 function App() {
   return (
     <HeroProvider>
-      <Navbar />
       <Layout>
         <Routes>
           <Route path="/" element={<Navigate to={RoutesEnum.Dashboard} />} />
