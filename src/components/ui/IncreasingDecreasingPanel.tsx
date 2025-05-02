@@ -10,12 +10,10 @@ type IncreasingDecreasingPanelProps = {
   type: 'increase' | 'decrease'
   factors: Factor[]
 }
-// #f8cd5f
 export const IncreasingDecreasingPanel = ({
   type = 'increase',
   factors = [],
 }: IncreasingDecreasingPanelProps) => {
-  // Вынесем цветовые классы в переменные
   const textColor = type === 'increase' ? 'text-green-400' : 'text-yellow-400'
   const borderColor = type === 'increase' ? 'border-green-400' : 'border-yellow-400'
   const iconColor = type === 'increase' ? 'text-green-500' : 'text-yellow-500'
@@ -23,7 +21,7 @@ export const IncreasingDecreasingPanel = ({
     type === 'increase'
       ? 'bg-gradient-to-r to-[#3bb477] from-[#283642]'
       : 'bg-gradient-to-r to-[#f8cd5f] from-[#283642]'
-      
+
   const rotateIcon = type === 'decrease' ? 'rotate-180' : ''
 
   return (

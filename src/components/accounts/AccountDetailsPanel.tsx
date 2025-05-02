@@ -1,6 +1,8 @@
 import { cn } from '@heroui/theme'
 import { useState } from 'react'
 import { IncreasingDecreasingPanel } from '../ui/IncreasingDecreasingPanel'
+import { Rocket } from 'lucide-react'
+import { Button } from '@heroui/react'
 
 const categories = [
   {
@@ -63,7 +65,13 @@ export const AccountDetailsPanel = () => {
                 onClick={() => setActiveCategoryId(id)}
               >
                 <span className="text-white text-xm font-light w-[85%]">{title}</span>
-                <span className="text-white bg-[#2a2f45] rounded-full text-xs px-2 py-0.5">
+                <span
+                  className={cn(
+                    `text-white bg-[#2a2f45] text-xs px-2 py-2 rounded`,
+                    'text-white bg-[#2a2f45] text-xs px-2 py-2 rounded',
+                    id === activeCategoryId ? 'border border-white' : '',
+                  )}
+                >
                   {count}
                 </span>
               </div>
@@ -90,7 +98,7 @@ export const AccountDetailsPanel = () => {
           ))}
         </aside>
 
-        <div className="flex-1 flex flex-col gap-4 border-l-1 border-dashed border-gray pl-8">
+        <div className="flex-1 flex flex-col gap-4 border-l-1 border-dashed border-[#8a8b98] pl-8">
           <div className="flex items-center justify-between">
             <p className="text-white text-4xl font-light ">{activeItem}</p>
           </div>
@@ -170,6 +178,47 @@ export const AccountDetailsPanel = () => {
           <div className="flex items-center justify-between gap-4">
             <IncreasingDecreasingPanel type="increase" factors={increasingFactors} />
             <IncreasingDecreasingPanel type="decrease" factors={decreasingFactors} />
+          </div>
+
+          <div className="flex bg-[#252a3e] rounded-2xl p-4 flex-col gap-4">
+            <div className="flex items-center">
+              <Rocket size={24} className="mr-2 text-green-400" />
+              <p className="text-green-400 text-xm font-light">AI-Powered Recommendations</p>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="text-white text-xs font-light">
+                    Offer 5% premium discount in exchange for 3-year commitment
+                  </div>
+                  <div className="text-gray-400 text-xs font-light">
+                    Historical win rate increases 24% with multi-year commitments. Current pricing
+                    is 12% above market average. This approach would strengthen retention while
+                    maintaining adequate profitability.
+                  </div>
+                </div>
+                <Button className="ml-8 bg-green-400 hover:bg-green-500 text-black text-xs font-light rounded-full px-10 py-3 transition">
+                  Apply
+                </Button>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="text-white text-xs font-light mb-1">
+                    Propose risk control services for cargo handling procedures
+                  </div>
+                  <div className="text-gray-400 text-xs font-light">
+                    Can potentially reduce loss ratio by 15-20% based on similar maritime accounts
+                    in your portfolio. Specific focus on loading/unloading operations would address
+                    the most frequent claim scenarios.
+                  </div>
+                </div>
+                <Button className="ml-8 bg-green-400 hover:bg-green-500 text-black text-xs font-light rounded-full px-10 py-3 transition">
+                  Apply
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

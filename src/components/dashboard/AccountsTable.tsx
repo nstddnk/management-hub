@@ -225,7 +225,7 @@ export const AccountsTable = () => {
             placeholder="Search"
             showLabel={false}
             radius="full"
-            inputClassName="w-[250px] md:w-[300px] lg:w-[400px] h-[40px] text-white placeholder-gray-400 bg-[#171F2F]"
+            inputClassName="w-[250px] md:w-[300px] lg:w-[400px] h-[40px] rounded-full text-white placeholder-gray-400 bg-[#171F2F]"
             aria-label="Search accounts"
           />
           <Button

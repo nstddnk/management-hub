@@ -1,4 +1,5 @@
 import { Input } from '@heroui/input'
+import { ChangeEvent } from 'react'
 
 type BasicInputProps = {
   label?: string
@@ -13,6 +14,8 @@ type BasicInputProps = {
   variant?: 'flat' | 'bordered' | 'underlined' | 'faded'
   radius?: 'sm' | 'md' | 'lg' | 'full'
   showLabel?: boolean
+  value?: string
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 export const InputField = ({
@@ -28,6 +31,8 @@ export const InputField = ({
   variant = 'bordered',
   radius = 'md',
   showLabel = true,
+  value,
+  onChange,
 }: BasicInputProps) => {
   return (
     <div className={`flex flex-col ${showLabel ? 'gap-2' : 'gap-0'} ${className}`}>
@@ -45,6 +50,8 @@ export const InputField = ({
         isRequired={isRequired}
         variant={variant}
         radius={radius}
+        value={value}
+        onChange={onChange}
         classNames={{
           base: 'text-white',
           input: 'bg-[#171F2F] text-white !text-white',
