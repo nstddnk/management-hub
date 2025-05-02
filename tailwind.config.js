@@ -10,6 +10,12 @@ export default {
     "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      sm: '480px',
+      md: '768px',
+      lg: '1025px',
+      xl: '1440px',
+    },
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

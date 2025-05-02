@@ -51,52 +51,54 @@ export const AccountsHeader = ({
   underwriter = defaultCompanyInfo.underwriter,
 }: AccountsHeaderProps) => {
   return (
-    <div className=" flex flex-col gap-4">
+    <div className="flex flex-col gap-4">
       <Breadcrumbs items={pages} />
 
-      <div className="flex items-center gap-4">
-        <div className="rounded-full bg-transparent border-2 border-blue-500 w-20 h-20 flex items-center justify-center">
-          <BoatLogo className="w-16 h-16" />
-        </div>
-        <div className=" flex flex-col gap-1 mr-[36px]">
-          <h3 className="text-[28px]" id="company-name">
-            {companyName}
-          </h3>
+      <div className="flex flex-col md:flex-col lg:flex-row gap-4">
+        <div className="flex items-center gap-4">
+          <div className="rounded-full bg-transparent border-2 border-blue-500 w-20 h-20 flex items-center justify-center">
+            <BoatLogo className="w-16 h-16" />
+          </div>
+          <div className="flex flex-col gap-1 mr-[36px]">
+            <h3 className="text-[28px]" id="company-name">
+              {companyName}
+            </h3>
 
-          <div className="flex flex-col">
-            <div className="flex items-center text-[12px]">
-              <div className="flex flex-col max-w-[200px]">
-                <span className="text-white break-words" aria-labelledby="company-name">
-                  {address}
-                </span>
-              </div>
-              <div className="h-8 w-px bg-gray-700 mx-4 my-auto" aria-hidden="true" />
-              <div className="flex flex-col">
-                <span className="text-gray-500">EXISTING ACCOUNT</span>
-                <span className="text-white" aria-label="Account number">
-                  {accountNumber}
-                </span>
-              </div>
-              <div className="h-8 w-px bg-gray-700 mx-4 my-auto" aria-hidden="true" />
-              <div className="flex flex-col">
-                <span className="text-gray-500">BROKER</span>
-                <span className="text-white" aria-label="Broker name">
-                  {broker}
-                </span>
-              </div>
-              <div className="h-8 w-px bg-gray-700 mx-4 my-auto" aria-hidden="true" />
-              <div className="flex flex-col">
-                <span className="text-gray-500">UNDERWRITER</span>
-                <span className="text-white" aria-label="Underwriter name">
-                  {underwriter}
-                </span>
+            <div className="flex flex-col">
+              <div className="flex items-center text-[12px]">
+                <div className="flex flex-col max-w-[200px]">
+                  <span className="text-white break-words" aria-labelledby="company-name">
+                    {address}
+                  </span>
+                </div>
+                <div className="h-8 w-px bg-gray-700 mx-4 my-auto" aria-hidden="true" />
+                <div className="flex flex-col">
+                  <span className="text-gray-500">EXISTING ACCOUNT</span>
+                  <span className="text-white" aria-label="Account number">
+                    {accountNumber}
+                  </span>
+                </div>
+                <div className="h-8 w-px bg-gray-700 mx-4 my-auto" aria-hidden="true" />
+                <div className="flex flex-col">
+                  <span className="text-gray-500">BROKER</span>
+                  <span className="text-white" aria-label="Broker name">
+                    {broker}
+                  </span>
+                </div>
+                <div className="h-8 w-px bg-gray-700 mx-4 my-auto" aria-hidden="true" />
+                <div className="flex flex-col">
+                  <span className="text-gray-500">UNDERWRITER</span>
+                  <span className="text-white" aria-label="Underwriter name">
+                    {underwriter}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <div
-          className="flex flex-col border flex-1 border-yellow-500/30 bg-[#1C1F26] p-4 rounded-2xl"
+          className="flex flex-col border border-yellow-500/30 bg-[#1C1F26] p-4 rounded-2xl lg:flex-1"
           role="region"
           aria-label="Attention items"
         >
