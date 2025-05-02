@@ -93,30 +93,30 @@ export const AccountsTable = () => {
       label: 'ACCOUNT NAME/TYPE',
       render: (item) => (
         <div className="flex flex-col">
-          <span className="text-white">{item.name}</span>
-          <span className="text-[#8E8E8E] text-sm">{item.type}</span>
+          <span className="text-white font-light text-xs">{item.name}</span>
+          <span className="text-[#8E8E8E] text-xs font-light">{item.type}</span>
         </div>
       ),
     },
     {
       key: 'line',
       label: 'LINE',
-      render: (item) => <span className="text-white">{item.line}</span>,
+      render: (item) => <span className="text-white font-light text-xs">{item.line}</span>,
     },
     {
       key: 'broker',
       label: 'BROKER',
-      render: (item) => <span className="text-white">{item.broker}</span>,
+      render: (item) => <span className="text-white font-light text-xs">{item.broker}</span>,
     },
     {
       key: 'renewalDate',
       label: 'RENEWAL DATE',
-      render: (item) => <span className="text-white">{item.renewalDate}</span>,
+      render: (item) => <span className="text-white font-light text-xs">{item.renewalDate}</span>,
     },
     {
       key: 'premium',
       label: 'PREMIUM',
-      render: (item) => <span className="text-[#4B7BF9]">{item.premium}</span>,
+      render: (item) => <span className="text-[#4B7BF9] font-light text-xs">{item.premium}</span>,
     },
     {
       key: 'ratedPremium',
@@ -124,7 +124,7 @@ export const AccountsTable = () => {
       align: 'right',
       render: (item) => (
         <div className="flex justify-end pr-[20px]">
-          <span className="text-white">{item.ratedPremium}</span>
+          <span className="text-white font-light text-xs">{item.ratedPremium}</span>
         </div>
       ),
     },
@@ -133,14 +133,13 @@ export const AccountsTable = () => {
       label: 'LOSS RATIO',
       render: (item) => (
         <div
-          className={`px-2 py-1 rounded-full inline-flex items-center justify-center
-          ${
-            item.lossRatio.color === 'green'
+          className={`px-2 py-1 rounded-full inline-flex items-center justify-center font-light text-xs
+          ${item.lossRatio.color === 'green'
               ? 'bg-[#16A34A]/20 text-[#16A34A]'
               : item.lossRatio.color === 'yellow'
                 ? 'bg-[#F5D90A]/20 text-[#F5D90A]'
                 : 'bg-[#EF4444]/20 text-[#EF4444]'
-          }`}
+            }`}
         >
           {item.lossRatio.value}%
         </div>
@@ -150,7 +149,7 @@ export const AccountsTable = () => {
       key: 'appetite',
       label: 'APPETITE',
       render: (item) => (
-        <div className="px-3 py-1 rounded-full bg-[#1A2747] text-white text-sm flex items-center justify-center min-w-[100px]">
+        <div className="px-3 py-1 rounded-full bg-[#1A2747] text-white text-xs font-light flex items-center justify-center min-w-[100px]">
           {item.appetite}
         </div>
       ),
@@ -161,11 +160,10 @@ export const AccountsTable = () => {
       render: (item) => (
         <div className="flex items-center gap-2">
           <div
-            className={`w-2 h-2 rounded-full ${
-              item.status.type === 'active' ? 'bg-[#16A34A]' : 'bg-[#F5D90A]'
-            }`}
+            className={`w-2 h-2 rounded-full ${item.status.type === 'active' ? 'bg-[#16A34A]' : 'bg-[#F5D90A]'
+              }`}
           />
-          <span className="text-white">{item.status.label}</span>
+          <span className="text-white font-light text-xs">{item.status.label}</span>
         </div>
       ),
     },
@@ -174,7 +172,7 @@ export const AccountsTable = () => {
       label: 'TRIAGE',
       render: (item) => (
         <div className="flex items-center">
-          <div className="px-3 py-1 rounded-full bg-[#171F2F] text-[#4B7BF9] text-sm flex items-center justify-center min-w-[80px] border border-[#4B7BF9]">
+          <div className="px-3 py-1 rounded-full bg-[#171F2F] text-[#4B7BF9] text-xs font-light flex items-center justify-center min-w-[80px] border border-[#4B7BF9]">
             {item.triage}
           </div>
         </div>
@@ -190,13 +188,12 @@ export const AccountsTable = () => {
               {[...Array(4)].map((_, i) => (
                 <div
                   key={i}
-                  className={`w-2 h-2 rounded-full ${
-                    i < item.winnability.score ? 'bg-[#4B7BF9]' : 'opacity-20 bg-[#4B7BF9]'
-                  }`}
+                  className={`w-2 h-2 rounded-full ${i < item.winnability.score ? 'bg-[#4B7BF9]' : 'opacity-20 bg-[#4B7BF9]'
+                    }`}
                 />
               ))}
             </div>
-            <span className="text-[#4B7BF9] text-sm">{item.winnability.label}</span>
+            <span className="text-[#4B7BF9] text-xs font-light">{item.winnability.label}</span>
           </div>
         </div>
       ),

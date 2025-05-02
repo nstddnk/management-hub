@@ -23,9 +23,14 @@ export const IncreasingDecreasingPanel = ({
       : 'bg-gradient-to-r to-[#f8cd5f] from-[#283642]'
 
   const rotateIcon = type === 'decrease' ? 'rotate-180' : ''
+  const panelTitle = type === 'increase' ? 'Increasing Winnability' : 'Decreasing Winnability'
 
   return (
-    <div className="flex flex-col bg-[#252a3e] justify-start gap-6 rounded-2xl p-4 w-full">
+    <div
+      className="flex flex-col bg-[#252a3e] justify-start gap-6 rounded-2xl p-4 w-full"
+      role="region"
+      aria-labelledby={`${type}-winnability-title`}
+    >
       <div className="flex items-center">
         <span
           className={cn(
@@ -34,38 +39,50 @@ export const IncreasingDecreasingPanel = ({
             borderColor,
             rotateIcon,
           )}
+          aria-hidden="true"
         >
           <ArrowUpIcon className={cn('w-3 h-3', iconColor)} />
         </span>
-        <p className="text-white text-xm font-light ">
-          {type === 'increase' ? 'Increasing Winnability' : 'Decreasing Winnability'}
-        </p>
+        <h4
+          id={`${type}-winnability-title`}
+          className="text-white text-xm font-light"
+        >
+          {panelTitle}
+        </h4>
       </div>
-      <ul className="space-y-4">
-        {factors.map((f, i) => (
-          <li key={f.label} className="flex items-center justify-start gap-2">
-            <span
-              className={cn(
-                'w-10 h-10 border-1 rounded-full flex items-center justify-center font-semibold text-xs',
-                textColor,
-                borderColor,
-              )}
-            >
-              {i + 1}
-            </span>
-            <div className="flex flex-col gap-1">
-              <h2 className="text-white text-xs">{f.label}</h2>
-              <div
-                style={{ width: `${270 - (i + 1) * 50}px` }}
-                className={cn('relative h-4 bg-[#323853]')}
-                role="progressbar"
+      <ul className="space-y-4" aria-label={`${panelTitle} factors`}>
+        {factors.map((f, i) => {
+          const progressValue = 100 - ((i + 1) * 20); // Approximate percentage for accessibility
+          return (
+            <li key={f.label} className="flex items-center justify-start gap-2">
+              <span
+                className={cn(
+                  'w-10 h-10 border-1 rounded-full flex items-center justify-center font-semibold text-xs',
+                  textColor,
+                  borderColor,
+                )}
+                aria-hidden="true"
               >
-                <div className={cn('absolute h-full w-full rounded-r-[10px]', gradientTo)} />
+                {i + 1}
+              </span>
+              <div className="flex flex-col gap-1">
+                <h5 className="text-white text-xs">{f.label}</h5>
+                <div
+                  style={{ width: `${270 - (i + 1) * 50}px` }}
+                  className={cn('relative h-4 bg-[#323853]')}
+                  role="progressbar"
+                  aria-valuenow={progressValue}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  aria-label={`${f.label} impact: ${f.value}`}
+                >
+                  <div className={cn('absolute h-full w-full rounded-r-[10px]', gradientTo)} />
+                </div>
               </div>
-            </div>
-            <span className="text-gray-400 text-xs font-light">{f.value}</span>
-          </li>
-        ))}
+              <span className="text-gray-400 text-xs font-light">{f.value}</span>
+            </li>
+          );
+        })}
       </ul>
     </div>
   )

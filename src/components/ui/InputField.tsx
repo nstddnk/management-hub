@@ -16,6 +16,8 @@ type BasicInputProps = {
   showLabel?: boolean
   value?: string
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+  'aria-label'?: string
+  'aria-describedby'?: string
 }
 
 export const InputField = ({
@@ -33,13 +35,19 @@ export const InputField = ({
   showLabel = true,
   value,
   onChange,
+  'aria-label': ariaLabel,
+  'aria-describedby': ariaDescribedby,
 }: BasicInputProps) => {
+  const errorId = errorMessage ? `${name}-error` : undefined;
+  const labelId = label ? `${name}-label` : undefined;
+  const describedBy = [ariaDescribedby, errorId].filter(Boolean).join(' ') || undefined;
+
   return (
     <div className={`flex flex-col ${showLabel ? 'gap-2' : 'gap-0'} ${className}`}>
       {showLabel && label && (
-        <label className="text-sm font-medium">
+        <label id={labelId} className="text-sm font-medium">
           {label}
-          {isRequired && <span className="text-red-500 ml-1">*</span>}
+          {isRequired && <span className="text-red-500 ml-1" aria-hidden="true">*</span>}
         </label>
       )}
       <Input
@@ -52,6 +60,11 @@ export const InputField = ({
         radius={radius}
         value={value}
         onChange={onChange}
+        aria-invalid={!!errorMessage}
+        aria-label={!labelId ? ariaLabel || label : undefined}
+        aria-labelledby={labelId}
+        aria-describedby={describedBy}
+        aria-required={isRequired}
         classNames={{
           base: 'text-white',
           input: 'bg-[#171F2F] text-white !text-white',
@@ -61,7 +74,7 @@ export const InputField = ({
         }}
         className={`${errorMessage ? 'border-red-500' : ''} ${inputClassName}`}
       />
-      {errorMessage && <span className="text-sm text-red-500">{errorMessage}</span>}
+      {errorMessage && <span id={errorId} className="text-sm text-red-500" role="alert">{errorMessage}</span>}
     </div>
   )
 }

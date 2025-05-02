@@ -90,7 +90,10 @@ export const WorkQueuePanel = () => {
       label: 'ORIGINATOR',
       render: (item) => (
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-[#1E40AF] flex items-center justify-center text-white text-sm">
+          <div
+            className="w-8 h-8 rounded-full bg-[#1E40AF] flex items-center justify-center text-white text-sm"
+            aria-hidden="true"
+          >
             {item.originator.initials}
           </div>
           <span className="text-white">{item.originator.name}</span>
@@ -103,7 +106,7 @@ export const WorkQueuePanel = () => {
       render: (item) => (
         <div className="flex flex-col">
           <span className="text-white">{item.client.name}</span>
-          <span className="text-[#8E8E8E] text-sm">{item.client.type}</span>
+          <span className="text-[#8E8E8E] text-sm" aria-label={`Line: ${item.client.type}`}>{item.client.type}</span>
         </div>
       ),
     },
@@ -118,15 +121,20 @@ export const WorkQueuePanel = () => {
       render: (item) => (
         <div className="flex items-center gap-2">
           <div
-            className={`w-2 h-2 rounded-full ${
-              item.status === 'New'
+            className={`w-2 h-2 rounded-full ${item.status === 'New'
                 ? 'bg-[#4B7BF9]'
                 : item.status === 'Pending Review'
                   ? 'bg-[#F5D90A]'
                   : 'bg-[#16A34A]'
-            }`}
+              }`}
+            aria-hidden="true"
           ></div>
-          <span className="text-white">{item.status}</span>
+          <span
+            className="text-white"
+            aria-live={item.status === 'Pending Review' ? 'polite' : 'off'}
+          >
+            {item.status}
+          </span>
         </div>
       ),
     },
@@ -138,13 +146,19 @@ export const WorkQueuePanel = () => {
     {
       key: 'actions',
       label: '',
-      render: () => (
-        <button className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10">
-          <MoreVertical className="w-4 h-4 text-white" />
+      render: (item) => (
+        <button
+          className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10"
+          aria-label={`More actions for ${item.client.name}`}
+        >
+          <MoreVertical className="w-4 h-4 text-white" aria-hidden="true" />
         </button>
       ),
     },
   ]
+
+  const activeTab = filterTabs.find(tab => tab.isActive);
+  const activeTabId = activeTab ? `${activeTab.label}-panel` : '';
 
   return (
     <div
@@ -163,12 +177,12 @@ export const WorkQueuePanel = () => {
             role="tab"
             aria-selected={tab.isActive}
             aria-controls={`${tab.label}-panel`}
+            id={`${tab.label}-tab`}
             className={`
               px-3 md:px-4 py-2 rounded-full flex items-center gap-2 transition-colors text-sm md:text-base whitespace-nowrap
-              ${
-                tab.isActive
-                  ? 'bg-[#4B7BF9] text-white'
-                  : 'bg-[#0A0F1A] text-white hover:bg-[#1E2737]'
+              ${tab.isActive
+                ? 'bg-[#4B7BF9] text-white'
+                : 'bg-[#0A0F1A] text-white hover:bg-[#1E2737]'
               }
             `}
           >
@@ -186,10 +200,15 @@ export const WorkQueuePanel = () => {
       <div
         className="overflow-x-auto -mx-4 px-4"
         role="tabpanel"
-        aria-labelledby="work-queue-content"
+        id={activeTabId}
+        aria-labelledby={activeTab ? `${activeTab.label}-tab` : undefined}
       >
         <div className="min-w-[800px]">
-          <DataTable data={mockData} columns={columns} />
+          <DataTable
+            data={mockData}
+            columns={columns}
+            aria-label={`${activeTab?.label || 'Work queue'} items`}
+          />
         </div>
       </div>
     </div>

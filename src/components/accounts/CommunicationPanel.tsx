@@ -1,7 +1,6 @@
-import { InputField } from '@/components/ui/InputField'
-import { Button } from '@heroui/button'
 import { CommunicationBlock, CommunicationBlockProps } from '../ui/CommunicationBlock'
 import { useMemo, useState } from 'react'
+import { SearchFilterControls } from '../ui/SearchFilterControls'
 
 const messages: CommunicationBlockProps[] = [
   {
@@ -57,33 +56,10 @@ export const CommunicationPanel = () => {
       <p className="text-white text-[32px] font-light mt-16">Communication</p>
 
       <div className="flex bg-[#1e2233] rounded-2xl p-4 flex-col gap-6 w-full">
-        <div className="flex items-center gap-3">
-          <InputField
-            name="message"
-            placeholder="Search"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            showLabel={false}
-            inputClassName="bg-[#171F2F] text-white placeholder-[#6B7280] border-0 focus:ring-0 focus:outline-none min-w-[160px] max-w-[200px] h-10 rounded-full px-4"
-            className="flex-1 max-w-[200px]"
-          />
-          <Button
-            color="primary"
-            variant="bordered"
-            radius="full"
-            className="px-5 text-base font-light border border-[#4B7BF9] text-[#4B7BF9] bg-transparent hover:bg-[#232736] shadow-none h-10 min-w-[90px]"
-          >
-            Filter
-          </Button>
-          <Button
-            color="primary"
-            variant="bordered"
-            radius="full"
-            className="px-5 text-base font-light border border-[#4B7BF9] text-[#4B7BF9] bg-transparent hover:bg-[#232736] shadow-none h-10 min-w-[90px]"
-          >
-            Group
-          </Button>
-        </div>
+        <SearchFilterControls
+          onSearchChange={setSearch}
+          initialSearchValue={search}
+        />
         <div className="w-full">
           <div className="grid grid-cols-2 gap-4">
             {data.map((message) => (

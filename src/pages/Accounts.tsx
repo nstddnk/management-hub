@@ -4,6 +4,7 @@ import { Policies } from '@/components/accounts/PoliciesPanel'
 import { AccountsStatusAndDocs } from '@/components/accounts/AccountsStatusAndDocs'
 import { AccountDetailsPanel } from '@/components/accounts/AccountDetailsPanel'
 import { CommunicationPanel } from '@/components/accounts/CommunicationPanel'
+import { PoliciesTable } from '@/components/accounts/PoliciesTable'
 export const Accounts = () => {
   return (
     <div>
@@ -13,6 +14,7 @@ export const Accounts = () => {
       <AccountsStatusAndDocs />
       <AccountDetailsPanel />
       <CommunicationPanel />
+      <PoliciesTable />
     </div>
   )
 }
