@@ -1,5 +1,6 @@
 import { Breadcrumbs } from '../ui/Breadcrumbs'
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline'
+import { BoatLogo } from '../ui/icons/BoatLogo'
 
 interface AccountsHeaderProps {
   companyName?: string
@@ -54,11 +55,9 @@ export const AccountsHeader = ({
       <Breadcrumbs items={pages} />
 
       <div className="flex items-center gap-4">
-        <div
-          className="rounded-full bg-purple-700 w-20 h-20"
-          role="img"
-          aria-label="Company logo"
-        ></div>
+        <div className="rounded-full bg-transparent border-2 border-blue-500 w-20 h-20 flex items-center justify-center">
+          <BoatLogo className="w-16 h-16" />
+        </div>
         <div className=" flex flex-col gap-1 mr-[36px]">
           <h3 className="text-[28px]" id="company-name">
             {companyName}

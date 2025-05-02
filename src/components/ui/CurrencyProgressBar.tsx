@@ -13,8 +13,8 @@ export const CurrencyProgressBar = ({
 }: CurrencyProgressBarProps) => {
   const targetValue = Number(target.replace(/[^0-9.]/g, ''))
   const percentage = (current / targetValue) * 100
-  const progressLabel = label || `Progress: ${current} of ${target}`;
-  const percentText = isNewBusiness ? '67%' : '68%';
+  const progressLabel = label || `Progress: ${current} of ${target}`
+  const percentText = isNewBusiness ? '67%' : '68%'
 
   return (
     <>

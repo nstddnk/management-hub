@@ -53,13 +53,10 @@ export const CommunicationPanel = () => {
 
   return (
     <div className="flex flex-col gap-6">
-      <p className="text-white text-[32px] font-light mt-16">Communication</p>
+      <p className="text-white text-[32px] font-light">Communication</p>
 
       <div className="flex bg-[#1e2233] rounded-2xl p-4 flex-col gap-6 w-full">
-        <SearchFilterControls
-          onSearchChange={setSearch}
-          initialSearchValue={search}
-        />
+        <SearchFilterControls onSearchChange={setSearch} initialSearchValue={search} />
         <div className="w-full">
           <div className="grid grid-cols-2 gap-4">
             {data.map((message) => (

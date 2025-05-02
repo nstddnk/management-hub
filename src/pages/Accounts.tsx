@@ -7,7 +7,7 @@ import { CommunicationPanel } from '@/components/accounts/CommunicationPanel'
 import { PoliciesTable } from '@/components/accounts/PoliciesTable'
 export const Accounts = () => {
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       <AccountsHeader />
       <PerformanceMetrics />
       <Policies />

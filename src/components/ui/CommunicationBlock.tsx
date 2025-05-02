@@ -31,7 +31,7 @@ export const CommunicationBlock = ({
       <div className="flex flex-row items-center gap-3">
         <div
           className="px-3 py-1 text-xs font-light rounded-full bg-[#3b4bf9] text-white uppercase tracking-wide"
-          aria-label={isReplied ? "Status: Responded" : "Status: New"}
+          aria-label={isReplied ? 'Status: Responded' : 'Status: New'}
         >
           {isReplied ? 'Responded' : 'New'}
         </div>

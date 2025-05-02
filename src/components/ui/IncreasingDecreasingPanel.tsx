@@ -43,16 +43,13 @@ export const IncreasingDecreasingPanel = ({
         >
           <ArrowUpIcon className={cn('w-3 h-3', iconColor)} />
         </span>
-        <h4
-          id={`${type}-winnability-title`}
-          className="text-white text-xm font-light"
-        >
+        <h4 id={`${type}-winnability-title`} className="text-white text-xm font-light">
           {panelTitle}
         </h4>
       </div>
       <ul className="space-y-4" aria-label={`${panelTitle} factors`}>
         {factors.map((f, i) => {
-          const progressValue = 100 - ((i + 1) * 20); // Approximate percentage for accessibility
+          const progressValue = 100 - (i + 1) * 20 // Approximate percentage for accessibility
           return (
             <li key={f.label} className="flex items-center justify-start gap-2">
               <span
@@ -81,7 +78,7 @@ export const IncreasingDecreasingPanel = ({
               </div>
               <span className="text-gray-400 text-xs font-light">{f.value}</span>
             </li>
-          );
+          )
         })}
       </ul>
     </div>

@@ -11,7 +11,7 @@ const steps = [
 
 export const AccountsStatusAndDocs = () => {
   return (
-    <div className="flex flex-col md:flex-row gap-6 mt-16">
+    <div className="flex flex-col md:flex-row gap-6">
       <div className="flex-1 flex flex-col gap-6">
         <p className="text-white text-[32px] font-light">Account Status</p>
         <div

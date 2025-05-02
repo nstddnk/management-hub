@@ -9,11 +9,15 @@ type RenewalProgressBarProps = {
 export const RenewalProgressBar = ({
   currentValue,
   targetRange,
-  label = "Renewal progress"
+  label = 'Renewal progress',
 }: RenewalProgressBarProps) => {
   // Determine if value is on target
-  const isOnTarget = currentValue >= targetRange.min && currentValue <= targetRange.max;
-  const statusText = isOnTarget ? "ON TARGET" : currentValue < targetRange.min ? "BELOW TARGET" : "ABOVE TARGET";
+  const isOnTarget = currentValue >= targetRange.min && currentValue <= targetRange.max
+  const statusText = isOnTarget
+    ? 'ON TARGET'
+    : currentValue < targetRange.min
+      ? 'BELOW TARGET'
+      : 'ABOVE TARGET'
 
   return (
     <div className="pt-6 pb-8">
@@ -29,7 +33,10 @@ export const RenewalProgressBar = ({
         <div className="bg-[#E53935] w-[15%] rounded-l-xl" aria-hidden="true"></div>
         <div className="bg-[#FDD835] w-[85%] rounded-r-xl" aria-hidden="true"></div>
         <div className="absolute left-[40%] -top-4 mt-px flex flex-col items-center justify-between">
-          <div className="text-[10px] text-[#8E8E8E]" aria-label={`Target range: ${targetRange.min}% to ${targetRange.max}%`}>
+          <div
+            className="text-[10px] text-[#8E8E8E]"
+            aria-label={`Target range: ${targetRange.min}% to ${targetRange.max}%`}
+          >
             TG:{targetRange.min}-{targetRange.max}%
           </div>
 

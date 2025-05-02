@@ -11,11 +11,11 @@ export const PortfolioProgressBar = ({
   currentValue,
   targetValue,
   performanceStatus = '-6.8% (GOOD)',
-  label = "Portfolio performance"
+  label = 'Portfolio performance',
 }: PortfolioProgressBarProps) => {
   // Extract just the status part (GOOD, etc.) for aria labels
-  const statusMatch = performanceStatus.match(/\(([^)]+)\)/);
-  const statusText = statusMatch ? statusMatch[1] : 'GOOD';
+  const statusMatch = performanceStatus.match(/\(([^)]+)\)/)
+  const statusText = statusMatch ? statusMatch[1] : 'GOOD'
 
   return (
     <div className="pt-10 pb-8">
@@ -38,7 +38,10 @@ export const PortfolioProgressBar = ({
           <ArrowIcon color="#4B7BF9" className="w-8 h-6" aria-hidden="true" />
         </div>
 
-        <div className="bg-[#43A047] w-[30%] text-[10px] h-6 relative rounded-l-xl" aria-hidden="true">
+        <div
+          className="bg-[#43A047] w-[30%] text-[10px] h-6 relative rounded-l-xl"
+          aria-hidden="true"
+        >
           <div
             className="absolute left-[68px] inset-0 flex items-center justify-center text-white"
             aria-hidden="true"

@@ -49,9 +49,17 @@ export const AccountDetailsPanel = () => {
 
   return (
     <div className="flex flex-col gap-6">
-      <h2 className="text-white text-[32px] font-light mt-16">Account Details</h2>
-      <div className="rounded-[20px] flex gap-8 bg-[#1e2233] h-full p-6" role="region" aria-label="Account details content">
-        <aside className="flex flex-col" role="navigation" aria-label="Account categories">
+      <h2 className="text-white text-[32px] font-light">Account Details</h2>
+      <div
+        className="rounded-[20px] flex gap-8 bg-[#1e2233] h-full p-6"
+        role="region"
+        aria-label="Account details content"
+      >
+        <aside
+          className="flex flex-col w-[317px]"
+          role="navigation"
+          aria-label="Account categories"
+        >
           {categories.map(({ title, count, id, items }) => (
             <div
               key={id}
@@ -69,17 +77,16 @@ export const AccountDetailsPanel = () => {
                 aria-controls={`category-items-${id}`}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    setActiveCategoryId(id);
+                    e.preventDefault()
+                    setActiveCategoryId(id)
                   }
                 }}
               >
                 <span className="text-white text-xm font-light w-[85%]">{title}</span>
                 <span
                   className={cn(
-                    `text-white bg-[#2a2f45] text-xs px-2 py-2 rounded`,
-                    'text-white bg-[#2a2f45] text-xs px-2 py-2 rounded',
-                    id === activeCategoryId ? 'border border-white' : '',
+                    'text-white bg-[#2a2f45] text-xm px-2 py-1 rounded ',
+                    id === activeCategoryId ? 'border border-white font-bold' : '',
                   )}
                   aria-label={`${count} items`}
                 >
@@ -115,7 +122,11 @@ export const AccountDetailsPanel = () => {
           ))}
         </aside>
 
-        <div className="flex-1 flex flex-col gap-4 border-l-1 border-dashed border-[#8a8b98] pl-8" role="main" aria-label={`${activeItem} details`}>
+        <div
+          className="flex-1 flex flex-col gap-4 border-l-1 border-dashed border-[#8a8b98] pl-8"
+          role="main"
+          aria-label={`${activeItem} details`}
+        >
           <div className="flex items-center justify-between">
             <h3 className="text-white text-4xl font-light ">{activeItem}</h3>
           </div>
@@ -139,9 +150,15 @@ export const AccountDetailsPanel = () => {
               </div>
             </div>
 
-            <div className="flex flex-col bg-[#252a3e] justify-center rounded-2xl p-4 w-[270px] h-[120px] justify-between">
+            <div className="flex flex-col bg-[#252a3e] justify-center rounded-2xl p-4 w-full h-[120px] justify-between">
               <h4 className="text-white text-lg font-light">Historical trend</h4>
-              <svg width="240" height="60" viewBox="0 0 240 60" fill="none" aria-label="Score trending upward from January to April">
+              <svg
+                width="240"
+                height="60"
+                viewBox="0 0 240 60"
+                fill="none"
+                aria-label="Score trending upward from January to April"
+              >
                 <polyline
                   fill="none"
                   stroke="#5B7CFA"
@@ -159,8 +176,8 @@ export const AccountDetailsPanel = () => {
                 <span>Now</span>
               </div>
             </div>
-            <div className="flex bg-[#252a3e] rounded-2xl p-4">
-              <div className="flex justify-center flex-col">
+            <div className="flex bg-[#252a3e] w-full rounded-2xl p-4">
+              <div className="flex justify-between flex-col">
                 <h4 className="text-white text-lg font-light">Position</h4>
                 <div className="flex items-center gap-4">
                   <div
@@ -173,7 +190,7 @@ export const AccountDetailsPanel = () => {
                   >
                     <div className="absolute h-full w-[80%] bg-gradient-to-r from-[#0f2557] to-[#60A5FA] rounded-r-[100px]" />
                   </div>
-                  <p className="text-white text-sm whitespace-nowrap">You score 82%</p>
+                  <p className="text-white text-xs whitespace-nowrap">You score 82%</p>
                 </div>
 
                 <div className="flex items-center gap-4">
@@ -187,7 +204,7 @@ export const AccountDetailsPanel = () => {
                   >
                     <div className="absolute h-full w-[70%] bg-gradient-to-r from-[#0f2557] to-[#60A5FA] rounded-r-[100px]" />
                   </div>
-                  <p className="text-[#A0A3B2] text-sm whitespace-nowrap">Top competitor: 88%</p>
+                  <p className="text-[#A0A3B2] text-xs whitespace-nowrap">Top competitor: 88%</p>
                 </div>
 
                 <div className="flex items-center gap-4">
@@ -201,7 +218,7 @@ export const AccountDetailsPanel = () => {
                   >
                     <div className="absolute h-full w-[90%] bg-gradient-to-r from-[#0f2557] to-[#60A5FA] rounded-r-[100px]" />
                   </div>
-                  <p className="text-[#A0A3B2] text-sm whitespace-nowrap">Workers Comp: 8.6%</p>
+                  <p className="text-[#A0A3B2] text-xs whitespace-nowrap">Workers Comp: 8.6%</p>
                 </div>
               </div>
             </div>
@@ -212,10 +229,16 @@ export const AccountDetailsPanel = () => {
             <IncreasingDecreasingPanel type="decrease" factors={decreasingFactors} />
           </div>
 
-          <div className="flex bg-[#252a3e] rounded-2xl p-4 flex-col gap-4" role="region" aria-labelledby="ai-recommendations-title">
+          <div
+            className="flex bg-[#252a3e] rounded-2xl p-4 flex-col gap-4"
+            role="region"
+            aria-labelledby="ai-recommendations-title"
+          >
             <div className="flex items-center">
               <Rocket size={24} className="mr-2 text-green-400" aria-hidden="true" />
-              <h4 id="ai-recommendations-title" className="text-green-400 text-xm font-light">AI-Powered Recommendations</h4>
+              <h4 id="ai-recommendations-title" className="text-green-400 text-xm font-light">
+                AI-Powered Recommendations
+              </h4>
             </div>
 
             <div className="flex flex-col gap-4">

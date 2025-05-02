@@ -21,18 +21,17 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({ items }) => {
           >
             <a
               href={item.href}
-              className={`${item.current
+              className={`${
+                item.current
                   ? 'text-blue-500 hover:text-blue-600'
                   : 'text-white hover:text-gray-300'
-                }`}
+              }`}
               aria-current={item.current ? 'page' : undefined}
               aria-label={item.current ? `Current page: ${item.name}` : item.name}
             >
               {item.name}
             </a>
-            {index < items.length - 1 && (
-              <span className="sr-only">, </span>
-            )}
+            {index < items.length - 1 && <span className="sr-only">, </span>}
           </li>
         ))}
       </ol>

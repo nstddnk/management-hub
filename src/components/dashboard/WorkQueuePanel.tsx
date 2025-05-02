@@ -106,7 +106,9 @@ export const WorkQueuePanel = () => {
       render: (item) => (
         <div className="flex flex-col">
           <span className="text-white">{item.client.name}</span>
-          <span className="text-[#8E8E8E] text-sm" aria-label={`Line: ${item.client.type}`}>{item.client.type}</span>
+          <span className="text-[#8E8E8E] text-sm" aria-label={`Line: ${item.client.type}`}>
+            {item.client.type}
+          </span>
         </div>
       ),
     },
@@ -121,12 +123,13 @@ export const WorkQueuePanel = () => {
       render: (item) => (
         <div className="flex items-center gap-2">
           <div
-            className={`w-2 h-2 rounded-full ${item.status === 'New'
+            className={`w-2 h-2 rounded-full ${
+              item.status === 'New'
                 ? 'bg-[#4B7BF9]'
                 : item.status === 'Pending Review'
                   ? 'bg-[#F5D90A]'
                   : 'bg-[#16A34A]'
-              }`}
+            }`}
             aria-hidden="true"
           ></div>
           <span
@@ -157,8 +160,8 @@ export const WorkQueuePanel = () => {
     },
   ]
 
-  const activeTab = filterTabs.find(tab => tab.isActive);
-  const activeTabId = activeTab ? `${activeTab.label}-panel` : '';
+  const activeTab = filterTabs.find((tab) => tab.isActive)
+  const activeTabId = activeTab ? `${activeTab.label}-panel` : ''
 
   return (
     <div
@@ -180,9 +183,10 @@ export const WorkQueuePanel = () => {
             id={`${tab.label}-tab`}
             className={`
               px-3 md:px-4 py-2 rounded-full flex items-center gap-2 transition-colors text-sm md:text-base whitespace-nowrap
-              ${tab.isActive
-                ? 'bg-[#4B7BF9] text-white'
-                : 'bg-[#0A0F1A] text-white hover:bg-[#1E2737]'
+              ${
+                tab.isActive
+                  ? 'bg-[#4B7BF9] text-white'
+                  : 'bg-[#0A0F1A] text-white hover:bg-[#1E2737]'
               }
             `}
           >

@@ -134,12 +134,13 @@ export const AccountsTable = () => {
       render: (item) => (
         <div
           className={`px-2 py-1 rounded-full inline-flex items-center justify-center font-light text-xs
-          ${item.lossRatio.color === 'green'
+          ${
+            item.lossRatio.color === 'green'
               ? 'bg-[#16A34A]/20 text-[#16A34A]'
               : item.lossRatio.color === 'yellow'
                 ? 'bg-[#F5D90A]/20 text-[#F5D90A]'
                 : 'bg-[#EF4444]/20 text-[#EF4444]'
-            }`}
+          }`}
         >
           {item.lossRatio.value}%
         </div>
@@ -160,8 +161,9 @@ export const AccountsTable = () => {
       render: (item) => (
         <div className="flex items-center gap-2">
           <div
-            className={`w-2 h-2 rounded-full ${item.status.type === 'active' ? 'bg-[#16A34A]' : 'bg-[#F5D90A]'
-              }`}
+            className={`w-2 h-2 rounded-full ${
+              item.status.type === 'active' ? 'bg-[#16A34A]' : 'bg-[#F5D90A]'
+            }`}
           />
           <span className="text-white font-light text-xs">{item.status.label}</span>
         </div>
@@ -188,8 +190,9 @@ export const AccountsTable = () => {
               {[...Array(4)].map((_, i) => (
                 <div
                   key={i}
-                  className={`w-2 h-2 rounded-full ${i < item.winnability.score ? 'bg-[#4B7BF9]' : 'opacity-20 bg-[#4B7BF9]'
-                    }`}
+                  className={`w-2 h-2 rounded-full ${
+                    i < item.winnability.score ? 'bg-[#4B7BF9]' : 'opacity-20 bg-[#4B7BF9]'
+                  }`}
                 />
               ))}
             </div>

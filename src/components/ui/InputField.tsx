@@ -38,16 +38,20 @@ export const InputField = ({
   'aria-label': ariaLabel,
   'aria-describedby': ariaDescribedby,
 }: BasicInputProps) => {
-  const errorId = errorMessage ? `${name}-error` : undefined;
-  const labelId = label ? `${name}-label` : undefined;
-  const describedBy = [ariaDescribedby, errorId].filter(Boolean).join(' ') || undefined;
+  const errorId = errorMessage ? `${name}-error` : undefined
+  const labelId = label ? `${name}-label` : undefined
+  const describedBy = [ariaDescribedby, errorId].filter(Boolean).join(' ') || undefined
 
   return (
     <div className={`flex flex-col ${showLabel ? 'gap-2' : 'gap-0'} ${className}`}>
       {showLabel && label && (
         <label id={labelId} className="text-sm font-medium">
           {label}
-          {isRequired && <span className="text-red-500 ml-1" aria-hidden="true">*</span>}
+          {isRequired && (
+            <span className="text-red-500 ml-1" aria-hidden="true">
+              *
+            </span>
+          )}
         </label>
       )}
       <Input
@@ -74,7 +78,11 @@ export const InputField = ({
         }}
         className={`${errorMessage ? 'border-red-500' : ''} ${inputClassName}`}
       />
-      {errorMessage && <span id={errorId} className="text-sm text-red-500" role="alert">{errorMessage}</span>}
+      {errorMessage && (
+        <span id={errorId} className="text-sm text-red-500" role="alert">
+          {errorMessage}
+        </span>
+      )}
     </div>
   )
 }

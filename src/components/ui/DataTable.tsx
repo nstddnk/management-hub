@@ -49,8 +49,9 @@ export const DataTable = <T extends Record<string, any>>({
       </TableHeader>
       <TableBody items={data}>
         {(item) => {
-          const isTotalRow = item.status?.type === 'total' ||
-            (item.status?.label && item.status.label.includes('TOTAL'));
+          const isTotalRow =
+            item.status?.type === 'total' ||
+            (item.status?.label && item.status.label.includes('TOTAL'))
 
           return (
             <TableRow
@@ -61,10 +62,12 @@ export const DataTable = <T extends Record<string, any>>({
               {...(isTotalRow ? { 'aria-rowtype': 'summary', 'aria-label': 'Total row' } : {})}
             >
               {(columnKey) => (
-                <TableCell role="cell">{columns.find((col) => col.key === columnKey)?.render(item)}</TableCell>
+                <TableCell role="cell">
+                  {columns.find((col) => col.key === columnKey)?.render(item)}
+                </TableCell>
               )}
             </TableRow>
-          );
+          )
         }}
       </TableBody>
     </Table>

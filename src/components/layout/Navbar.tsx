@@ -45,8 +45,8 @@ export const Navbar = () => {
   return (
     <div className="flex flex-col w-full" role="navigation" aria-label="Main navigation">
       <div className="w-full border-b-[0.5px] border-[#232736]">
-        <div className="max-w-[1920px] mx-auto">
-          <div className="flex justify-between items-center h-20 px-2 md:px-4 lg:px-6">
+        <div className="max-w-[1920px] mx-auto px-8">
+          <div className="flex justify-between items-center h-20">
             <div className="text-2xl font-normal" role="status">
               Hi Arthur, welcome! You have 12 open tasks.
             </div>
@@ -73,8 +73,8 @@ export const Navbar = () => {
       </div>
 
       <div className="w-full">
-        <div className="max-w-[1920px] mx-auto">
-          <div className="flex items-center justify-between w-full px-2 md:px-4 lg:px-6 py-4">
+        <div className="max-w-[1920px] mx-auto px-8">
+          <div className="flex items-center justify-between w-full py-4">
             <div
               ref={scrollContainerRef}
               className="flex-1 flex items-center space-x-2 overflow-x-auto pr-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"

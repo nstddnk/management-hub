@@ -49,7 +49,7 @@ const policies: Policy[] = [
 export const Policies = () => {
   return (
     <div className="flex flex-col gap-6">
-      <p className="text-white text-[32px] font-light mt-16">Policies</p>
+      <p className="text-white text-[32px] font-light">Policies</p>
       <div className="bg-[#1e2233] rounded-[20px] p-6">
         <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {policies.map((policy) => {
