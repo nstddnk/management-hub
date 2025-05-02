@@ -55,7 +55,7 @@ export const Policies = () => {
           {policies.map((policy) => {
             const Icon = policy.icon
             return (
-              <div 
+              <div
                 key={policy.name}
                 className="flex-shrink-0 bg-[#252a3e] rounded-2xl p-6 min-w-[250px] border border-[#ffffff0d] shadow-[0_4px_24px_0_rgba(0,0,0,0.15)]"
                 role="article"
@@ -67,10 +67,14 @@ export const Policies = () => {
                 </div>
                 <div className="flex flex-col">
                   <div className="flex flex-col">
-                    <span className="text-[#64748B] text-sm font-light">Premium: {policy.premium}</span>
+                    <span className="text-[#64748B] text-sm font-light">
+                      Premium: {policy.premium}
+                    </span>
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[#64748B] text-sm font-light">Eff.Date: {policy.effectiveDate}</span>
+                    <span className="text-[#64748B] text-sm font-light">
+                      Eff.Date: {policy.effectiveDate}
+                    </span>
                   </div>
                 </div>
               </div>

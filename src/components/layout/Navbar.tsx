@@ -47,7 +47,9 @@ export const Navbar = () => {
       <div className="w-full border-b-[0.5px] border-[#232736]">
         <div className="max-w-[1920px] mx-auto">
           <div className="flex justify-between items-center h-20 px-2 md:px-4 lg:px-6">
-            <div className="text-2xl font-normal" role="status">Hi Arthur, welcome! You have 12 open tasks.</div>
+            <div className="text-2xl font-normal" role="status">
+              Hi Arthur, welcome! You have 12 open tasks.
+            </div>
             <div className="flex items-center gap-3">
               <InputField
                 name="search"
@@ -57,7 +59,7 @@ export const Navbar = () => {
                 inputClassName="w-[250px] md:w-[300px] lg:w-[400px] h-[40px] text-white placeholder-gray-400"
                 aria-label="Global search"
               />
-              <div 
+              <div
                 className="w-10 h-10 rounded-full bg-[#1E40AF] flex items-center justify-center text-xl font-light text-white"
                 role="button"
                 aria-label="User profile"
