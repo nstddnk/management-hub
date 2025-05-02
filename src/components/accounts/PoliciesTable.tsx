@@ -26,7 +26,7 @@ type PolicyItem = {
 
 const mockData: PolicyItem[] = [
   {
-    line: 'Marine Cargo',
+    line: 'Marine',
     id: '17030212',
     effDate: '6/30/2026',
     expDate: '6/30/2027',
@@ -40,7 +40,7 @@ const mockData: PolicyItem[] = [
     lossRatio: { value: 22, color: 'green' },
   },
   {
-    line: 'General Liability',
+    line: 'General',
     id: '4651092',
     effDate: '6/30/2026',
     expDate: '6/30/2027',
@@ -54,7 +54,7 @@ const mockData: PolicyItem[] = [
     lossRatio: { value: 55, color: 'yellow' },
   },
   {
-    line: 'Workers Comp',
+    line: 'Workers',
     id: '9182371',
     effDate: 'Pending',
     expDate: 'Pending',
@@ -102,11 +102,11 @@ export const PoliciesTable = () => {
 
   const getLineColor = (line: string): string => {
     switch (line) {
-      case 'Marine Cargo':
+      case 'Marine':
         return 'bg-[#4B7BF9]'
-      case 'General Liability':
+      case 'General':
         return 'bg-[#16A34A]'
-      case 'Workers Comp':
+      case 'Workers':
         return 'bg-[#9333EA]'
       case 'Umbrella':
         return 'bg-[#EF4444]'

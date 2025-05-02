@@ -26,7 +26,6 @@ export const DataTable = <T extends Record<string, any>>({
       className={`min-w-full ${className}`}
       removeWrapper
       classNames={{
-        base: 'overflow-hidden',
         table: 'min-w-full',
         thead:
           'h-6 [&_th]:!bg-[#232838] [&>tr:first-child>th:first-child]:rounded-none [&>tr:last-child>th:first-child]:rounded-none [&>tr:first-child>th:last-child]:rounded-none [&>tr:last-child>th:last-child]:rounded-none',
