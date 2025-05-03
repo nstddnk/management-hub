@@ -3,12 +3,46 @@ import { useState } from 'react'
 import { IncreasingDecreasingPanel } from '../ui/IncreasingDecreasingPanel'
 import { Rocket } from 'lucide-react'
 import { Button } from '@heroui/react'
-import accountDetailsCategoriesData from '../../mockData/accountDetailsCategories.json'
-import winnabilityFactorsData from '../../mockData/winnabilityFactors.json'
 
-const categories = accountDetailsCategoriesData
-const { increasingFactors, decreasingFactors } = winnabilityFactorsData
+const categories = [
+  {
+    id: 1,
+    title: 'DECISION SUPPORT',
+    count: 4,
+    items: [
+      { label: 'Winnability', id: 'winnability' },
+      { label: 'Exposure Review & Suggested Coverage', id: 'exposure' },
+      { label: 'Portfolio Strategy Alignment', id: 'strategy' },
+      { label: 'Broker Analytics', id: 'broker' },
+    ],
+  },
+  {
+    id: 2,
+    title: 'RISK ASSESSMENT',
+    count: 6,
+    items: [],
+  },
+  {
+    id: 3,
+    title: 'DOCUMENTS AND COMPLIANCE',
+    count: 2,
+    items: [],
+  },
+]
 
+const increasingFactors = [
+  { label: 'Brokers relationship', value: '+28%' },
+  { label: 'Loss history', value: '+22%' },
+  { label: 'Industry growth', value: '+16%' },
+  { label: 'Multiline opportunity', value: '+11%' },
+]
+
+const decreasingFactors = [
+  { label: 'Premium pricing', value: '-24%' },
+  { label: 'Total exposure', value: '-18%' },
+  { label: 'Loss ratio trend', value: '-13%' },
+  { label: 'Market competition', value: '-5%' },
+]
 export const AccountDetailsPanel = () => {
   const [activeCategoryId, setActiveCategoryId] = useState(1)
   const [activeItem, setActiveItem] = useState('Winnability')
@@ -164,37 +198,113 @@ export const AccountDetailsPanel = () => {
                     aria-valuenow={82}
                     aria-valuemin={0}
                     aria-valuemax={100}
+                    aria-label="Your score"
                   >
-                    <div className="absolute h-full w-[82%] bg-gradient-to-r from-[#4B7BF9] via-[#4B7BF9] to-[#60A5FA] rounded-r-[100px]"></div>
+                    <div className="absolute h-full w-[80%] bg-gradient-to-r from-[#0f2557] to-[#60A5FA] rounded-r-[100px]" />
                   </div>
-                  <span className="text-blue-500 font-bold inline-flex items-center">
-                    <Rocket className="w-4 h-4 mr-1" aria-hidden="true" /> Top 82%
-                  </span>
+                  <p className="text-white text-xs md:text-[10px] lg:text-xs whitespace-nowrap">
+                    You score 82%
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3 lg:gap-4 my-2">
+                  <div
+                    className="w-[120px] md:w-[140px] lg:w-[160px] relative h-3 lg:h-4 bg-[#323853] rounded-r-[100px] overflow-hidden"
+                    role="progressbar"
+                    aria-valuenow={70}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-label="Top competitor score"
+                  >
+                    <div className="absolute h-full w-[70%] bg-gradient-to-r from-[#0f2557] to-[#60A5FA] rounded-r-[100px]" />
+                  </div>
+                  <p className="text-[#A0A3B2] text-xs md:text-[10px] lg:text-xs whitespace-nowrap">
+                    Top competitor: 88%
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3 lg:gap-4">
+                  <div
+                    className="w-[120px] md:w-[140px] lg:w-[160px] relative h-3 lg:h-4 bg-[#323853] rounded-r-[100px] overflow-hidden"
+                    role="progressbar"
+                    aria-valuenow={90}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-label="Workers Comp score"
+                  >
+                    <div className="absolute h-full w-[90%] bg-gradient-to-r from-[#0f2557] to-[#60A5FA] rounded-r-[100px]" />
+                  </div>
+                  <p className="text-[#A0A3B2] text-xs md:text-[10px] lg:text-xs whitespace-nowrap">
+                    Workers Comp: 8.6%
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col my-4">
-            <h4 className="text-white text-lg md:text-base lg:text-lg font-light mb-4">
-              Influencing Factors
-            </h4>
-            <div className="flex flex-col xl:flex-row gap-4 mt-2">
-              <IncreasingDecreasingPanel
-                type="increase"
-                factors={increasingFactors}
-              />
-              <IncreasingDecreasingPanel
-                type="decrease"
-                factors={decreasingFactors}
-              />
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
+            <div className="w-full lg:w-1/2">
+              <IncreasingDecreasingPanel type="increase" factors={increasingFactors} />
+            </div>
+            <div className="w-full lg:w-1/2">
+              <IncreasingDecreasingPanel type="decrease" factors={decreasingFactors} />
             </div>
           </div>
 
-          <div className="flex justify-end mt-4">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
-              View Full Analysis
-            </Button>
+          <div
+            className="flex bg-[#252a3e] rounded-xl lg:rounded-2xl p-4 flex-col gap-4"
+            role="region"
+            aria-labelledby="ai-recommendations-title"
+          >
+            <div className="flex items-center">
+              <Rocket size={20} className="mr-2 text-green-400" aria-hidden="true" />
+              <h4
+                id="ai-recommendations-title"
+                className="text-green-400 text-sm lg:text-base md:text-xs font-light"
+              >
+                AI-Powered Recommendations
+              </h4>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col lg:flex-row lg:items-center gap-3 justify-between">
+                <div>
+                  <div className="text-white text-xs md:text-[10px] lg:text-xs font-light">
+                    Offer 5% premium discount in exchange for 3-year commitment
+                  </div>
+                  <div className="text-gray-400 text-xs md:text-[10px] lg:text-xs font-light">
+                    Historical win rate increases 24% with multi-year commitments. Current pricing
+                    is 12% above market average. This approach would strengthen retention while
+                    maintaining adequate profitability.
+                  </div>
+                </div>
+                <Button
+                  className="lg:ml-8 bg-green-400 hover:bg-green-500 text-black text-xs md:text-[10px] lg:text-xs font-light rounded-full px-6 lg:px-10 py-2 lg:py-3 transition mt-2 lg:mt-0"
+                  aria-label="Apply premium discount recommendation"
+                >
+                  Apply
+                </Button>
+              </div>
+
+              <div className="flex flex-col lg:flex-row lg:items-center gap-3 justify-between">
+                <div>
+                  <div className="text-white text-xs md:text-[10px] lg:text-xs font-light mb-1">
+                    Propose risk control services for cargo handling procedures
+                  </div>
+                  <div className="text-gray-400 text-xs md:text-[10px] lg:text-xs font-light">
+                    Can potentially reduce loss ratio by 15-20% based on similar maritime accounts
+                    in your portfolio. Specific focus on loading/unloading operations would address
+                    the most frequent claim scenarios.
+                  </div>
+                </div>
+                <Button
+                  className="lg:ml-8 bg-green-400 hover:bg-green-500 text-black text-xs md:text-[10px] lg:text-xs font-light rounded-full px-6 lg:px-10 py-2 lg:py-3 transition mt-2 lg:mt-0"
+                  aria-label="Apply risk control services recommendation"
+                >
+                  Apply
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
