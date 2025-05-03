@@ -1,13 +1,13 @@
 import { FC } from 'react'
 
-interface BreadcrumbItem {
+interface BreadcrumbItemInterface {
   name: string
   href: string
   current: boolean
 }
 
 interface BreadcrumbsProps {
-  items: BreadcrumbItem[]
+  items: BreadcrumbItemInterface[]
 }
 
 export const Breadcrumbs: FC<BreadcrumbsProps> = ({ items }) => {

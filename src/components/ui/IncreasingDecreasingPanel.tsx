@@ -1,14 +1,14 @@
 import { ArrowUpIcon } from '@heroicons/react/24/outline'
 import cn from 'clsx'
 
-type Factor = {
+type FactorType = {
   label: string
   value: string
 }
 
 type IncreasingDecreasingPanelProps = {
   type: 'increase' | 'decrease'
-  factors: Factor[]
+  factors: FactorType[]
 }
 export const IncreasingDecreasingPanel = ({
   type = 'increase',
@@ -50,6 +50,7 @@ export const IncreasingDecreasingPanel = ({
       <ul className="space-y-4" aria-label={`${panelTitle} factors`}>
         {factors.map((f, i) => {
           const progressValue = 100 - (i + 1) * 20 // Approximate percentage for accessibility
+
           return (
             <li key={f.label} className="flex items-center justify-start gap-2">
               <span

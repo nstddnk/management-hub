@@ -16,8 +16,8 @@ type BasicInputProps = {
   showLabel?: boolean
   value?: string
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
-  'aria-label'?: string
-  'aria-describedby'?: string
+  ariaLabel?: string
+  ariaDescribedby?: string
 }
 
 export const InputField = ({
@@ -35,12 +35,13 @@ export const InputField = ({
   showLabel = true,
   value,
   onChange,
-  'aria-label': ariaLabel,
-  'aria-describedby': ariaDescribedby,
+  ariaLabel,
+  ariaDescribedby,
 }: BasicInputProps) => {
   const errorId = errorMessage ? `${name}-error` : undefined
   const labelId = label ? `${name}-label` : undefined
-  const describedBy = [ariaDescribedby, errorId].filter(Boolean).join(' ') || undefined
+  const describedBy =
+    [ariaDescribedby, errorId].filter((id): id is string => Boolean(id)).join(' ') || undefined
 
   return (
     <div className={`flex flex-col ${showLabel ? 'gap-2' : 'gap-0'} ${className}`}>

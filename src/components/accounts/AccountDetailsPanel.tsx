@@ -100,8 +100,9 @@ export const AccountDetailsPanel = () => {
                 {activeCategoryId === id && items.length > 0 && (
                   <div
                     id={`category-items-${id}`}
-                    className={`mt-2 pl-2 animate-slide-down origin-top ${id === activeCategoryId ? 'flex' : 'hidden'
-                      } flex-row lg:flex-col flex-wrap gap-1`}
+                    className={`mt-2 pl-2 animate-slide-down origin-top ${
+                      id === activeCategoryId ? 'flex' : 'hidden'
+                    } flex-row lg:flex-col flex-wrap gap-1`}
                     role="menu"
                   >
                     {items.map((item) => (
@@ -144,7 +145,9 @@ export const AccountDetailsPanel = () => {
                     Overall Score
                   </h4>
                   <div className="flex items-center">
-                    <span className="text-white text-2xl md:text-xl lg:text-4xl font-light">82%</span>
+                    <span className="text-white text-2xl md:text-xl lg:text-4xl font-light">
+                      82%
+                    </span>
                     <div
                       className="flex items-center border border-blue-500 rounded-full px-3 lg:px-4 py-0.5 lg:py-1 ml-2"
                       aria-label="Score rating: Very Strong"
@@ -193,7 +196,9 @@ export const AccountDetailsPanel = () => {
                 </div>
                 <div className="flex bg-[#252a3e] w-full lg:w-1/3 rounded-xl lg:rounded-2xl p-4">
                   <div className="flex justify-between flex-col w-full">
-                    <h4 className="text-white text-lg md:text-base lg:text-lg font-light">Position</h4>
+                    <h4 className="text-white text-lg md:text-base lg:text-lg font-light">
+                      Position
+                    </h4>
                     <div className="flex items-center gap-3 lg:gap-4">
                       <div
                         className="w-[120px] md:w-[140px] lg:w-[160px] relative h-3 lg:h-4 bg-[#323853] rounded-r-[100px] overflow-hidden"
@@ -276,9 +281,9 @@ export const AccountDetailsPanel = () => {
                         Offer 5% premium discount in exchange for 3-year commitment
                       </div>
                       <div className="text-gray-400 text-xs md:text-[10px] lg:text-xs font-light">
-                        Historical win rate increases 24% with multi-year commitments. Current pricing
-                        is 12% above market average. This approach would strengthen retention while
-                        maintaining adequate profitability.
+                        Historical win rate increases 24% with multi-year commitments. Current
+                        pricing is 12% above market average. This approach would strengthen
+                        retention while maintaining adequate profitability.
                       </div>
                     </div>
                     <Button
@@ -295,9 +300,9 @@ export const AccountDetailsPanel = () => {
                         Propose risk control services for cargo handling procedures
                       </div>
                       <div className="text-gray-400 text-xs md:text-[10px] lg:text-xs font-light">
-                        Can potentially reduce loss ratio by 15-20% based on similar maritime accounts
-                        in your portfolio. Specific focus on loading/unloading operations would address
-                        the most frequent claim scenarios.
+                        Can potentially reduce loss ratio by 15-20% based on similar maritime
+                        accounts in your portfolio. Specific focus on loading/unloading operations
+                        would address the most frequent claim scenarios.
                       </div>
                     </div>
                     <Button

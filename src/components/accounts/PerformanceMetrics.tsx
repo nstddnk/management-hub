@@ -16,12 +16,17 @@ export const PerformanceMetrics = () => {
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
               <p className="text-white text-base md:text-lg lg:text-xl">Winnability</p>
-              <div className="flex gap-1" role="img" aria-label={`Winnability score: ${metrics.winnability.score} out of 4`}>
-                {[...Array(4)].map((_, i) => (
+              <div
+                className="flex gap-1"
+                role="img"
+                aria-label={`Winnability score: ${metrics.winnability.score} out of 4`}
+              >
+                {Array(4).map((_, i) => (
                   <div
                     key={i}
-                    className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full ${i < metrics.winnability.score ? 'bg-blue-500' : 'bg-gray-500/20'
-                      }`}
+                    className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full ${
+                      i < metrics.winnability.score ? 'bg-blue-500' : 'bg-gray-500/20'
+                    }`}
                   />
                 ))}
               </div>

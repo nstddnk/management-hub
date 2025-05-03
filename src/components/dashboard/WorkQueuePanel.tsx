@@ -1,12 +1,30 @@
 import { useState } from 'react'
 import { MoreVertical, Eye, Edit, Trash2 } from 'lucide-react'
-import { DataTable, type DataTableColumn } from '@/components/ui/DataTable'
+import { DataTable, type DataTableColumnType } from '@/components/ui/DataTable'
 import { Button } from '@heroui/button'
 import { DropdownMenu, DropdownMenuItem } from '@/components/ui/DropdownMenu'
 import workQueueData from '../../mockData/workQueue.json'
 import filterTabsData from '../../mockData/filterTabs.json'
 
-type WorkQueueItem = {
+type WorkQueueItemType = {
+  originator: {
+    initials: string
+    name: string
+  }
+  client: {
+    name: string
+    type: string
+  }
+  type: string
+  statusText: 'New' | 'Pending Review' | 'Completed'
+  status?: {
+    type?: string
+    label?: string
+  }
+  created: string
+}
+
+type WorkQueueDataType = {
   originator: {
     initials: string
     name: string
@@ -20,16 +38,28 @@ type WorkQueueItem = {
   created: string
 }
 
-const mockData = workQueueData as WorkQueueItem[]
+const mockData = (workQueueData as WorkQueueDataType[]).map((item) => ({
+  ...item,
+  statusText: item.status,
+  status: {
+    type:
+      item.status === 'Completed'
+        ? 'completed'
+        : item.status === 'Pending Review'
+          ? 'pending'
+          : 'new',
+    label: item.status,
+  },
+})) as WorkQueueItemType[]
 
-type FilterTab = {
+type FilterTabType = {
   label: string
   count: number
   isActive: boolean
 }
 
 export const WorkQueuePanel = () => {
-  const [filterTabs, setFilterTabs] = useState<FilterTab[]>(filterTabsData as FilterTab[])
+  const [filterTabs, setFilterTabs] = useState<FilterTabType[]>(filterTabsData as FilterTabType[])
 
   const handleTabClick = (clickedLabel: string) => {
     setFilterTabs((tabs) =>
@@ -40,7 +70,7 @@ export const WorkQueuePanel = () => {
     )
   }
 
-  const columns: DataTableColumn<WorkQueueItem>[] = [
+  const columns: DataTableColumnType<WorkQueueItemType>[] = [
     {
       key: 'originator',
       label: 'ORIGINATOR',
@@ -79,19 +109,20 @@ export const WorkQueuePanel = () => {
       render: (item) => (
         <div className="flex items-center gap-2">
           <div
-            className={`w-2 h-2 rounded-full ${item.status === 'New'
-              ? 'bg-[#4B7BF9]'
-              : item.status === 'Pending Review'
-                ? 'bg-[#F5D90A]'
-                : 'bg-[#16A34A]'
-              }`}
+            className={`w-2 h-2 rounded-full ${
+              item.statusText === 'New'
+                ? 'bg-[#4B7BF9]'
+                : item.statusText === 'Pending Review'
+                  ? 'bg-[#F5D90A]'
+                  : 'bg-[#16A34A]'
+            }`}
             aria-hidden="true"
           ></div>
           <span
             className="text-white"
-            aria-live={item.status === 'Pending Review' ? 'polite' : 'off'}
+            aria-live={item.statusText === 'Pending Review' ? 'polite' : 'off'}
           >
-            {item.status}
+            {item.statusText}
           </span>
         </div>
       ),
@@ -104,11 +135,11 @@ export const WorkQueuePanel = () => {
     {
       key: 'actions',
       label: '',
-      render: (item: WorkQueueItem) => {
+      render: (item: WorkQueueItemType) => {
         const itemIndex = mockData.findIndex(
-          (i) => i.client.name === item.client.name && i.created === item.created
-        );
-        const isBottomItem = itemIndex >= mockData.length - 2;
+          (i) => i.client.name === item.client.name && i.created === item.created,
+        )
+        const isBottomItem = itemIndex >= mockData.length - 2
 
         return (
           <DropdownMenu
@@ -124,9 +155,11 @@ export const WorkQueuePanel = () => {
           >
             <DropdownMenuItem icon={<Eye className="w-4 h-4" />}>View Details</DropdownMenuItem>
             <DropdownMenuItem icon={<Edit className="w-4 h-4" />}>Edit</DropdownMenuItem>
-            <DropdownMenuItem icon={<Trash2 className="w-4 h-4 text-red-400" />}>Delete</DropdownMenuItem>
+            <DropdownMenuItem icon={<Trash2 className="w-4 h-4 text-red-400" />}>
+              Delete
+            </DropdownMenuItem>
           </DropdownMenu>
-        );
+        )
       },
     },
   ]
@@ -154,9 +187,10 @@ export const WorkQueuePanel = () => {
             id={`${tab.label}-tab`}
             className={`
               px-3 md:px-4 py-2 rounded-full flex items-center gap-2 transition-colors text-sm md:text-base whitespace-nowrap
-              ${tab.isActive
-                ? 'bg-[#4B7BF9] text-white'
-                : 'bg-[#0A0F1A] text-white hover:bg-[#1E2737]'
+              ${
+                tab.isActive
+                  ? 'bg-[#4B7BF9] text-white'
+                  : 'bg-[#0A0F1A] text-white hover:bg-[#1E2737]'
               }
             `}
           >

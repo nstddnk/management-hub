@@ -47,7 +47,7 @@ export const CommunicationBlock = ({
         aria-label={`From ${author} on ${date}`}
       >
         <p>{author}</p>
-        <span aria-hidden="true">//</span>
+        <span aria-hidden="true">{'//'}</span>
         <p>{date}</p>
       </div>
       <div className="text-[#d1d5db] text-xs font-light">{message}</div>

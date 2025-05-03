@@ -15,7 +15,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [dropDirection, setDropDirection] = useState<'up' | 'down'>(
-    direction === 'auto' ? 'down' : (direction as 'up' | 'down'),
+    direction === 'auto' ? 'down' : direction,
   )
   const dropdownRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLDivElement>(null)
@@ -50,6 +50,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
     }
 
     document.addEventListener('mousedown', handleClickOutside)
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }

@@ -1,7 +1,7 @@
 import { Ship, ShieldUser, ShieldCheck, Building2, Umbrella } from 'lucide-react'
 import policiesData from '../../mockData/policies.json'
 
-type Policy = {
+type PolicyType = {
   iconType: string
   iconColor: string
   name: string
@@ -9,7 +9,7 @@ type Policy = {
   effectiveDate: string
 }
 
-const policies = policiesData as Policy[]
+const policies = policiesData as PolicyType[]
 
 const getIconComponent = (iconType: string) => {
   switch (iconType) {
@@ -36,6 +36,7 @@ export const Policies = () => {
         <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {policies.map((policy) => {
             const Icon = getIconComponent(policy.iconType)
+
             return (
               <div
                 key={policy.name}

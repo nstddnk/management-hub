@@ -1,10 +1,10 @@
-import { DataTable, type DataTableColumn } from '@/components/ui/DataTable'
+import { DataTable, type DataTableColumnType } from '@/components/ui/DataTable'
 import { MoreVertical } from 'lucide-react'
 import { Button } from '@heroui/button'
 import { InputField } from '@/components/ui/InputField'
 import accountsData from '../../mockData/accounts.json'
 
-type AccountItem = {
+type AccountItemType = {
   name: string
   type: string
   line: string
@@ -28,10 +28,10 @@ type AccountItem = {
   }
 }
 
-const mockData = accountsData as AccountItem[]
+const mockData = accountsData as AccountItemType[]
 
 export const AccountsTable = () => {
-  const columns: DataTableColumn<AccountItem>[] = [
+  const columns: DataTableColumnType<AccountItemType>[] = [
     {
       key: 'name',
       label: 'ACCOUNT NAME/TYPE',
@@ -98,12 +98,13 @@ export const AccountsTable = () => {
       render: (item) => (
         <div
           className={`px-2 py-1 rounded-full inline-flex items-center justify-center font-light text-xs md:text-[10px] lg:text-xs
-          ${item.lossRatio.color === 'green'
+          ${
+            item.lossRatio.color === 'green'
               ? 'bg-[#16A34A]/20 text-[#16A34A]'
               : item.lossRatio.color === 'yellow'
                 ? 'bg-[#F5D90A]/20 text-[#F5D90A]'
                 : 'bg-[#EF4444]/20 text-[#EF4444]'
-            }`}
+          }`}
         >
           {item.lossRatio.value}%
         </div>
@@ -124,8 +125,9 @@ export const AccountsTable = () => {
       render: (item) => (
         <div className="flex items-center gap-2">
           <div
-            className={`w-2 h-2 rounded-full ${item.status.type === 'active' ? 'bg-[#16A34A]' : 'bg-[#F5D90A]'
-              }`}
+            className={`w-2 h-2 rounded-full ${
+              item.status.type === 'active' ? 'bg-[#16A34A]' : 'bg-[#F5D90A]'
+            }`}
           />
           <span className="text-white font-light text-xs md:text-[10px] lg:text-xs">
             {item.status.label}
@@ -151,11 +153,12 @@ export const AccountsTable = () => {
         <div className="flex">
           <div className="px-4 py-1.5 rounded-full border border-[#4B7BF9] bg-[#171F2F] flex items-center gap-2 min-w-[160px]">
             <div className="flex gap-1">
-              {[...Array(4)].map((_, i) => (
+              {Array.from({ length: 4 }).map((_, i) => (
                 <div
                   key={i}
-                  className={`w-2 h-2 rounded-full ${i < item.winnability.score ? 'bg-[#4B7BF9]' : 'opacity-20 bg-[#4B7BF9]'
-                    }`}
+                  className={`w-2 h-2 rounded-full ${
+                    i < item.winnability.score ? 'bg-[#4B7BF9]' : 'opacity-20 bg-[#4B7BF9]'
+                  }`}
                 />
               ))}
             </div>
@@ -193,7 +196,7 @@ export const AccountsTable = () => {
             showLabel={false}
             radius="full"
             inputClassName="w-full md:w-[200px] lg:w-[400px] h-[40px] rounded-full text-white placeholder-gray-400 bg-[#171F2F]"
-            aria-label="Search accounts"
+            ariaLabel="Search accounts"
           />
           <div className="flex flex-wrap gap-2 mt-2 md:mt-0">
             <Button

@@ -13,10 +13,6 @@ export const PortfolioProgressBar = ({
   performanceStatus = '-6.8% (GOOD)',
   label = 'Portfolio performance',
 }: PortfolioProgressBarProps) => {
-  // Extract just the status part (GOOD, etc.) for aria labels
-  const statusMatch = performanceStatus.match(/\(([^)]+)\)/)
-  const statusText = statusMatch ? statusMatch[1] : 'GOOD'
-
   return (
     <div className="pt-10 pb-8">
       <div

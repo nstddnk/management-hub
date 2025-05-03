@@ -3,7 +3,7 @@ import { RenewalProgressBar } from '../ui/RenewalProgressBar'
 import { PortfolioProgressBar } from '../ui/PortfolioProgressBar'
 import portfolioMetricsData from '../../mockData/portfolioMetrics.json'
 
-type PortfolioMetric = {
+type PortfolioMetricType = {
   label: string
   target: string
   current: number
@@ -12,7 +12,7 @@ type PortfolioMetric = {
   variant?: string
 }
 
-const metrics = portfolioMetricsData as PortfolioMetric[]
+const metrics = portfolioMetricsData as PortfolioMetricType[]
 
 const MetricLabel = ({ label }: { label: string }) => (
   <div className="flex flex-col gap-1">

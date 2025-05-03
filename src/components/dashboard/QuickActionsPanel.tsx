@@ -1,12 +1,12 @@
 import { Button } from '@heroui/button'
 import quickActionsData from '../../mockData/quickActions.json'
 
-type QuickAction = {
+type QuickActionType = {
   label: string
   action: string
 }
 
-const quickActions = quickActionsData as QuickAction[]
+const quickActions = quickActionsData as QuickActionType[]
 
 export const QuickActionsPanel = () => {
   return (
@@ -21,7 +21,9 @@ export const QuickActionsPanel = () => {
         {quickActions.map((action) => (
           <Button
             key={action.label}
-            onPress={() => console.log(`${action.action} clicked`)}
+            onPress={() => {
+              /* TODO: Implement action handler for ${action.action} */
+            }}
             color="primary"
             variant="solid"
             radius="full"

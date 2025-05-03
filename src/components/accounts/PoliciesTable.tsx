@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { SearchFilterControls } from '../ui/SearchFilterControls'
-import { DataTable, type DataTableColumn } from '@/components/ui/DataTable'
+import { DataTable, type DataTableColumnType } from '@/components/ui/DataTable'
 import { MoreVertical, Ship, ShieldCheck, ShieldUser, Umbrella } from 'lucide-react'
 import policiesTableData from '../../mockData/policiesTable.json'
 
-type PolicyItem = {
+type PolicyItemType = {
   line: string
   id: string
   effDate: string
@@ -25,7 +25,7 @@ type PolicyItem = {
   }
 }
 
-const mockData = policiesTableData as PolicyItem[]
+const mockData = policiesTableData as PolicyItemType[]
 
 export const PoliciesTable = () => {
   const [search, setSearch] = useState('')
@@ -60,7 +60,7 @@ export const PoliciesTable = () => {
     }
   }
 
-  const columns: DataTableColumn<PolicyItem>[] = [
+  const columns: DataTableColumnType<PolicyItemType>[] = [
     {
       key: 'line',
       label: 'LINE',
@@ -149,12 +149,13 @@ export const PoliciesTable = () => {
       label: 'RATE CHANGE',
       render: (item) => (
         <span
-          className={`${item.status.label.startsWith('TOTAL')
-            ? 'text-white'
-            : item.rateChange && parseFloat(item.rateChange) > 5
-              ? 'text-[#EF4444]'
-              : 'text-white'
-            } font-light text-xs`}
+          className={`${
+            item.status.label.startsWith('TOTAL')
+              ? 'text-white'
+              : item.rateChange && parseFloat(item.rateChange) > 5
+                ? 'text-[#EF4444]'
+                : 'text-white'
+          } font-light text-xs`}
           aria-label={
             item.rateChange ? `Rate change: ${item.rateChange}` : 'Rate change not available'
           }
@@ -170,18 +171,20 @@ export const PoliciesTable = () => {
         item.lossRatio.value !== null ? (
           <div
             className={`px-2 py-1 rounded-full inline-flex items-center justify-center font-light text-xs
-                            ${item.lossRatio.color === 'green'
-                ? 'bg-[#16A34A]/20 text-[#16A34A]'
+                            ${
+                              item.lossRatio.color === 'green'
+                                ? 'bg-[#16A34A]/20 text-[#16A34A]'
+                                : item.lossRatio.color === 'yellow'
+                                  ? 'bg-[#F5D90A]/20 text-[#F5D90A]'
+                                  : 'bg-[#EF4444]/20 text-[#EF4444]'
+                            }`}
+            aria-label={`Loss ratio: ${item.lossRatio.value}%, ${
+              item.lossRatio.color === 'green'
+                ? 'good'
                 : item.lossRatio.color === 'yellow'
-                  ? 'bg-[#F5D90A]/20 text-[#F5D90A]'
-                  : 'bg-[#EF4444]/20 text-[#EF4444]'
-              }`}
-            aria-label={`Loss ratio: ${item.lossRatio.value}%, ${item.lossRatio.color === 'green'
-              ? 'good'
-              : item.lossRatio.color === 'yellow'
-                ? 'moderate'
-                : 'high'
-              }`}
+                  ? 'moderate'
+                  : 'high'
+            }`}
           >
             {item.lossRatio.value}%
           </div>

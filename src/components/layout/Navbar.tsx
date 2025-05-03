@@ -8,7 +8,6 @@ import { Button } from '@heroui/button'
 import navItemsData from '../../mockData/navItems.json'
 import userWelcomeData from '../../mockData/userWelcome.json'
 
-
 const iconMap = {
   House,
   Database,
@@ -16,12 +15,12 @@ const iconMap = {
   FileSymlink,
   Building2,
   Goal,
-  KeyRound
+  KeyRound,
 }
 
-const navItems = navItemsData.map(item => ({
+const navItems = navItemsData.map((item) => ({
   ...item,
-  icon: iconMap[item.icon as keyof typeof iconMap]
+  icon: iconMap[item.icon as keyof typeof iconMap],
 }))
 
 export const Navbar = () => {
@@ -70,7 +69,8 @@ export const Navbar = () => {
         <div className="max-w-[1920px] mx-auto px-8">
           <div className="flex justify-between items-center h-20">
             <div className="text-2xl font-normal" role="status">
-              Hi {userWelcomeData.userName}, welcome! You have {userWelcomeData.openTasks} open tasks.
+              Hi {userWelcomeData.userName}, welcome! You have {userWelcomeData.openTasks} open
+              tasks.
             </div>
             <div className="flex items-center gap-3">
               <InputField
@@ -117,11 +117,12 @@ export const Navbar = () => {
                     aria-controls={`${label}-panel`}
                     className={`
                       flex items-center gap-2 px-4 py-2 rounded-full border whitespace-nowrap transition-all duration-150
-                      ${isActive
-                        ? 'bg-nav-active border-nav-active text-white'
-                        : isClickedItem
-                          ? 'bg-[#0A0F1A] border-[#60A5FA] text-[#60A5FA] scale-95'
-                          : 'bg-[#0A0F1A] border-[#1E2737] text-white hover:bg-[#1E2737]'
+                      ${
+                        isActive
+                          ? 'bg-nav-active border-nav-active text-white'
+                          : isClickedItem
+                            ? 'bg-[#0A0F1A] border-[#60A5FA] text-[#60A5FA] scale-95'
+                            : 'bg-[#0A0F1A] border-[#1E2737] text-white hover:bg-[#1E2737]'
                       }
                     `}
                   >

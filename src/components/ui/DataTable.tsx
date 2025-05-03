@@ -1,6 +1,6 @@
 import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell } from '@heroui/table'
 
-export type DataTableColumn<T> = {
+export type DataTableColumnType<T> = {
   key: string
   label: string
   render: (item: T) => React.ReactNode
@@ -9,16 +9,21 @@ export type DataTableColumn<T> = {
 
 type DataTableProps<T> = {
   data: T[]
-  columns: DataTableColumn<T>[]
+  columns: DataTableColumnType<T>[]
   className?: string
-  'aria-label'?: string
+  ariaLabel?: string
 }
 
-export const DataTable = <T extends Record<string, any>>({
+type StatusType = {
+  type?: string
+  label?: string
+}
+
+export const DataTable = <T extends Record<string, unknown> & { status?: StatusType }>({
   data,
   columns,
   className = '',
-  'aria-label': ariaLabel = 'Data Table',
+  ariaLabel = 'Data Table',
 }: DataTableProps<T>) => {
   return (
     <Table
@@ -58,7 +63,7 @@ export const DataTable = <T extends Record<string, any>>({
               className={isTotalRow ? 'border-b-[2px] border-[#232838]' : ''}
               role="row"
               aria-rowindex={data.indexOf(item) + 1}
-              {...(isTotalRow ? { 'aria-rowtype': 'summary', 'aria-label': 'Total row' } : {})}
+              {...(isTotalRow ? { ariaRowtype: 'summary', ariaLabel: 'Total row' } : {})}
             >
               {(columnKey) => (
                 <TableCell role="cell">

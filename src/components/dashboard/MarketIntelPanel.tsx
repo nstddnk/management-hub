@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import marketUpdatesData from '../../mockData/marketUpdates.json'
 
-type MarketUpdate = {
+type MarketUpdateType = {
   color: 'red' | 'yellow' | 'blue'
   text: string
   link: string
@@ -11,13 +11,14 @@ type MarketUpdate = {
 }
 
 // Add IDs and mock details to market updates
-const marketUpdates = (marketUpdatesData as MarketUpdate[]).map((update, index) => ({
+const marketUpdates = (marketUpdatesData as MarketUpdateType[]).map((update, index) => ({
   ...update,
   id: `update-${index}`,
-  details: "This market update may impact your portfolio. Our analysis suggests potential opportunities in related sectors. Click for more detailed information and expert recommendations."
+  details:
+    'This market update may impact your portfolio. Our analysis suggests potential opportunities in related sectors. Click for more detailed information and expert recommendations.',
 }))
 
-const getIndicatorColor = (color: MarketUpdate['color']) => {
+const getIndicatorColor = (color: MarketUpdateType['color']) => {
   switch (color) {
     case 'red':
       return 'bg-[#EF4444]'
@@ -35,7 +36,7 @@ export const MarketIntelPanel = () => {
 
   const toggleExpand = (id: string, e: React.MouseEvent) => {
     e.preventDefault()
-    setExpandedItem(prev => prev === id ? null : id)
+    setExpandedItem((prev) => (prev === id ? null : id))
   }
 
   return (
@@ -55,15 +56,15 @@ export const MarketIntelPanel = () => {
                 className={`w-[10px] h-[10px] rounded-full shrink-0 mt-1.5 ${getIndicatorColor(update.color)}`}
               />
               <span
-                onClick={(e) => toggleExpand(update.id!, e)}
+                onClick={(e) => toggleExpand(update.id, e)}
                 className="text-white text-sm leading-normal group-hover:text-[#4B7BF9] transition-colors flex-1 cursor-pointer"
               >
                 {update.text}
               </span>
               <button
-                onClick={(e) => toggleExpand(update.id!, e)}
+                onClick={(e) => toggleExpand(update.id, e)}
                 className="text-[#4B7BF9] hover:text-[#4B7BF9]/80 transition-colors shrink-0"
-                aria-label={expandedItem === update.id ? "Hide details" : "Show details"}
+                aria-label={expandedItem === update.id ? 'Hide details' : 'Show details'}
               >
                 {expandedItem === update.id ? (
                   <ChevronUp className="w-4 h-4" />
