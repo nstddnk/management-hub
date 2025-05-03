@@ -8,11 +8,6 @@ import { Button } from '@heroui/button'
 import navItemsData from '../../mockData/navItems.json'
 import userWelcomeData from '../../mockData/userWelcome.json'
 
-type NavItem = {
-  href: string
-  label: string
-  icon: string
-}
 
 const iconMap = {
   House,

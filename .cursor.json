@@ -1,0 +1,7 @@
+{
+  "defaultFormatter": "prettier",
+  "formatOnSave": true,
+  "formatOnType": false,
+  "useEditorConfig": false,
+  "usePrettierrc": true
+} 

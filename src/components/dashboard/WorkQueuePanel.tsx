@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { MoreVertical } from 'lucide-react'
+import { MoreVertical, Eye, Edit, Trash2 } from 'lucide-react'
 import { DataTable, type DataTableColumn } from '@/components/ui/DataTable'
 import { Button } from '@heroui/button'
+import { DropdownMenu, DropdownMenuItem } from '@/components/ui/DropdownMenu'
 import workQueueData from '../../mockData/workQueue.json'
 import filterTabsData from '../../mockData/filterTabs.json'
 
@@ -103,14 +104,30 @@ export const WorkQueuePanel = () => {
     {
       key: 'actions',
       label: '',
-      render: (item) => (
-        <button
-          className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10"
-          aria-label={`More actions for ${item.client.name}`}
-        >
-          <MoreVertical className="w-4 h-4 text-white" aria-hidden="true" />
-        </button>
-      ),
+      render: (item: WorkQueueItem) => {
+        const itemIndex = mockData.findIndex(
+          (i) => i.client.name === item.client.name && i.created === item.created
+        );
+        const isBottomItem = itemIndex >= mockData.length - 2;
+
+        return (
+          <DropdownMenu
+            trigger={
+              <button
+                className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10"
+                aria-label={`More actions for ${item.client.name}`}
+              >
+                <MoreVertical className="w-4 h-4 text-white" aria-hidden="true" />
+              </button>
+            }
+            direction={isBottomItem ? 'up' : 'auto'}
+          >
+            <DropdownMenuItem icon={<Eye className="w-4 h-4" />}>View Details</DropdownMenuItem>
+            <DropdownMenuItem icon={<Edit className="w-4 h-4" />}>Edit</DropdownMenuItem>
+            <DropdownMenuItem icon={<Trash2 className="w-4 h-4 text-red-400" />}>Delete</DropdownMenuItem>
+          </DropdownMenu>
+        );
+      },
     },
   ]
 
