@@ -1,6 +1,6 @@
 import { Link } from '@heroui/link'
-import { useLocation } from 'react-router-dom'
-import { useRef } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useRef, useState } from 'react'
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
 import { Database, UsersRound, FileSymlink, Building2, Goal, KeyRound, House } from 'lucide-react'
 import { InputField } from '@/components/ui/InputField'
@@ -31,7 +31,9 @@ const navItems = navItemsData.map(item => ({
 
 export const Navbar = () => {
   const location = useLocation()
+  const navigate = useNavigate()
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const [clickedItem, setClickedItem] = useState<string | null>(null)
 
   const handleScroll = (direction: 'left' | 'right') => {
     const container = scrollContainerRef.current
@@ -46,6 +48,25 @@ export const Navbar = () => {
       left: newScroll,
       behavior: 'smooth',
     })
+  }
+
+  const handleNavItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Allow normal navigation for dashboard and accounts
+    if (href === '/dashboard' || href === '/accounts') {
+      return
+    }
+
+    // Prevent default link behavior for other routes
+    e.preventDefault()
+
+    // Set clicked state for visual effect
+    setClickedItem(href)
+
+    // Navigate to the route after a small delay to show the visual effect
+    setTimeout(() => {
+      navigate(href)
+      setClickedItem(null)
+    }, 300)
   }
 
   return (
@@ -89,10 +110,13 @@ export const Navbar = () => {
             >
               {navItems.map(({ href, label, icon: Icon }) => {
                 const isActive = location.pathname === href
+                const isClickedItem = clickedItem === href
+
                 return (
                   <Link
                     key={href}
                     href={href}
+                    onClick={(e) => handleNavItemClick(e, href)}
                     role="tab"
                     aria-selected={isActive}
                     aria-controls={`${label}-panel`}
@@ -100,7 +124,9 @@ export const Navbar = () => {
                       flex items-center gap-2 px-4 py-2 rounded-full border whitespace-nowrap transition-all duration-150
                       ${isActive
                         ? 'bg-nav-active border-nav-active text-white'
-                        : 'bg-[#0A0F1A] border-[#1E2737] text-white hover:bg-[#1E2737]'
+                        : isClickedItem
+                          ? 'bg-[#0A0F1A] border-[#60A5FA] text-[#60A5FA] scale-95'
+                          : 'bg-[#0A0F1A] border-[#1E2737] text-white hover:bg-[#1E2737]'
                       }
                     `}
                   >
