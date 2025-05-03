@@ -50,7 +50,7 @@ const MetricLabel = ({ label }: { label: string }) => (
 
 export const PortfolioGoalsPanel = () => {
   return (
-    <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-4 w-[17%] h-full">
+    <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-4 w-full md:w-full lg:w-[17%]">
       <h2 className="text-2xl leading-normal font-extralight mb-3 text-white">Portfolio goals</h2>
       <div className="flex flex-col gap-5 md:gap-7">
         {metrics.map((metric) => (

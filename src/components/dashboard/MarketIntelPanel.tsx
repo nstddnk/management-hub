@@ -37,7 +37,7 @@ const getIndicatorColor = (color: MarketUpdate['color']) => {
 
 export const MarketIntelPanel = () => {
   return (
-    <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-3 w-full lg:max-w-[280px]">
+    <div className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-3 w-full md:flex-1 lg:max-w-[280px]">
       <h2 className="text-1xl leading-normal font-extralight mb-3 text-white">
         Market intelligence
       </h2>

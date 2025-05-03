@@ -100,9 +100,8 @@ export const AccountDetailsPanel = () => {
                 {activeCategoryId === id && items.length > 0 && (
                   <div
                     id={`category-items-${id}`}
-                    className={`mt-2 pl-2 animate-slide-down origin-top ${
-                      id === activeCategoryId ? 'flex' : 'hidden'
-                    } flex-row lg:flex-col flex-wrap gap-1`}
+                    className={`mt-2 pl-2 animate-slide-down origin-top ${id === activeCategoryId ? 'flex' : 'hidden'
+                      } flex-row lg:flex-col flex-wrap gap-1`}
                     role="menu"
                   >
                     {items.map((item) => (

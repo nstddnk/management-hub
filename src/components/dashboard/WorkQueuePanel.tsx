@@ -123,13 +123,12 @@ export const WorkQueuePanel = () => {
       render: (item) => (
         <div className="flex items-center gap-2">
           <div
-            className={`w-2 h-2 rounded-full ${
-              item.status === 'New'
-                ? 'bg-[#4B7BF9]'
-                : item.status === 'Pending Review'
-                  ? 'bg-[#F5D90A]'
-                  : 'bg-[#16A34A]'
-            }`}
+            className={`w-2 h-2 rounded-full ${item.status === 'New'
+              ? 'bg-[#4B7BF9]'
+              : item.status === 'Pending Review'
+                ? 'bg-[#F5D90A]'
+                : 'bg-[#16A34A]'
+              }`}
             aria-hidden="true"
           ></div>
           <span
@@ -165,7 +164,7 @@ export const WorkQueuePanel = () => {
 
   return (
     <div
-      className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-4 w-[66%] h-full"
+      className="bg-[#1e2233] rounded-2xl border border-[#1E2737] p-4 w-full lg:w-[66%]"
       role="region"
       aria-label="Work Queue"
     >
@@ -183,10 +182,9 @@ export const WorkQueuePanel = () => {
             id={`${tab.label}-tab`}
             className={`
               px-3 md:px-4 py-2 rounded-full flex items-center gap-2 transition-colors text-sm md:text-base whitespace-nowrap
-              ${
-                tab.isActive
-                  ? 'bg-[#4B7BF9] text-white'
-                  : 'bg-[#0A0F1A] text-white hover:bg-[#1E2737]'
+              ${tab.isActive
+                ? 'bg-[#4B7BF9] text-white'
+                : 'bg-[#0A0F1A] text-white hover:bg-[#1E2737]'
               }
             `}
           >
