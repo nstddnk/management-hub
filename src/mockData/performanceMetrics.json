@@ -1,0 +1,35 @@
+{
+  "winnability": {
+    "score": 4,
+    "label": "Very Strong"
+  },
+  "lossRatio": {
+    "current": 25,
+    "target": 42
+  },
+  "premiumGrowth": {
+    "percentage": 12.4,
+    "yoyLabel": "YoY increase",
+    "values": {
+      "current": "$123M",
+      "target": "$150M"
+    }
+  },
+  "exposureDistribution": [
+    {
+      "name": "Marine Cargo",
+      "percentage": 71.4,
+      "fillPercentage": 80
+    },
+    {
+      "name": "General Liability",
+      "percentage": 20,
+      "fillPercentage": 70
+    },
+    {
+      "name": "Workers Comp",
+      "percentage": 8.6,
+      "fillPercentage": 60
+    }
+  ]
+} 

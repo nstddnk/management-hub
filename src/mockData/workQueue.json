@@ -1,0 +1,44 @@
+[
+  {
+    "originator": { "initials": "SM", "name": "Sam Masters" },
+    "client": { "name": "NAMEX Tech Solutions", "type": "Cyber Liability" },
+    "type": "Underwriter Referral",
+    "status": "New",
+    "created": "04/16/2025"
+  },
+  {
+    "originator": { "initials": "AW", "name": "Annalise Willis" },
+    "client": { "name": "Maritime Logistics Corp", "type": "Marine Cargo" },
+    "type": "Underwriter Referral",
+    "status": "New",
+    "created": "04/20/2025"
+  },
+  {
+    "originator": { "initials": "PD", "name": "Patrick Devenport" },
+    "client": { "name": "GreenField Energy Ltd", "type": "Environmental" },
+    "type": "Loss Control Request",
+    "status": "New",
+    "created": "04/16/2025"
+  },
+  {
+    "originator": { "initials": "AK", "name": "Ana Killian" },
+    "client": { "name": "NorthStar Financial Group", "type": "D&O Liability" },
+    "type": "Underwriter Referral",
+    "status": "Pending Review",
+    "created": "04/22/2025"
+  },
+  {
+    "originator": { "initials": "AK", "name": "Ana Killian" },
+    "client": { "name": "Alliance Healthcare Systems", "type": "Medical Malpractice" },
+    "type": "Email",
+    "status": "Completed",
+    "created": "04/28/2025"
+  },
+  {
+    "originator": { "initials": "MK", "name": "Me" },
+    "client": { "name": "QuantumTech Industries", "type": "Product Liability" },
+    "type": "Email",
+    "status": "Completed",
+    "created": "04/20/2025"
+  }
+] 

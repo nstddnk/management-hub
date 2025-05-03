@@ -1,50 +1,32 @@
 import { Ship, ShieldUser, ShieldCheck, Building2, Umbrella } from 'lucide-react'
+import policiesData from '../../mockData/policies.json'
 
 type Policy = {
-  icon: typeof ShieldUser
+  iconType: string
   iconColor: string
   name: string
   premium: string
   effectiveDate: string
 }
 
-const policies: Policy[] = [
-  {
-    icon: Ship,
-    iconColor: 'text-[#4B7BF9]',
-    name: 'Marine Cargo',
-    premium: '$625,000',
-    effectiveDate: '6/30/2026',
-  },
-  {
-    icon: ShieldCheck,
-    iconColor: 'text-[#16A34A]',
-    name: 'General Liability',
-    premium: '$175,000',
-    effectiveDate: '6/30/2026',
-  },
-  {
-    icon: ShieldUser,
-    iconColor: 'text-[#9333EA]',
-    name: 'Workers Comp',
-    premium: '$75,000',
-    effectiveDate: '---',
-  },
-  {
-    icon: Building2,
-    iconColor: 'text-[#EAB308]',
-    name: 'Property',
-    premium: '$64,829.83',
-    effectiveDate: '---',
-  },
-  {
-    icon: Umbrella,
-    iconColor: 'text-[#EF4444]',
-    name: 'Umbrella',
-    premium: '$275,000',
-    effectiveDate: '13/03/2026',
-  },
-]
+const policies = policiesData as Policy[]
+
+const getIconComponent = (iconType: string) => {
+  switch (iconType) {
+    case 'Ship':
+      return Ship
+    case 'ShieldUser':
+      return ShieldUser
+    case 'ShieldCheck':
+      return ShieldCheck
+    case 'Building2':
+      return Building2
+    case 'Umbrella':
+      return Umbrella
+    default:
+      return Ship
+  }
+}
 
 export const Policies = () => {
   return (
@@ -53,7 +35,7 @@ export const Policies = () => {
       <div className="bg-[#1e2233] rounded-[20px] p-6">
         <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {policies.map((policy) => {
-            const Icon = policy.icon
+            const Icon = getIconComponent(policy.iconType)
             return (
               <div
                 key={policy.name}

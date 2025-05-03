@@ -1,0 +1,14 @@
+{
+  "increasingFactors": [
+    { "label": "Brokers relationship", "value": "+28%" },
+    { "label": "Loss history", "value": "+22%" },
+    { "label": "Industry growth", "value": "+16%" },
+    { "label": "Multiline opportunity", "value": "+11%" }
+  ],
+  "decreasingFactors": [
+    { "label": "Premium pricing", "value": "-24%" },
+    { "label": "Total exposure", "value": "-18%" },
+    { "label": "Loss ratio trend", "value": "-13%" },
+    { "label": "Market competition", "value": "-5%" }
+  ]
+} 

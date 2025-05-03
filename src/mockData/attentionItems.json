@@ -1,0 +1,20 @@
+{
+  "TITLE": "Needs Attention",
+  "ITEMS": [
+    {
+      "TITLE": "Marine Survey Required",
+      "SUBTITLE": "Scheduled for 06/12/2025",
+      "LINK": "Review details"
+    },
+    {
+      "TITLE": "Loss Control Complete",
+      "SUBTITLE": "Last inspection: 02/15/2025",
+      "LINK": "View report"
+    },
+    {
+      "TITLE": "Claims Review Required",
+      "SUBTITLE": "3 open claims // $245,000 TTL",
+      "LINK": "View claims"
+    }
+  ]
+} 

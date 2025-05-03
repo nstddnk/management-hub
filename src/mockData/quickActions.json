@@ -1,0 +1,18 @@
+[
+  {
+    "label": "New Submission",
+    "action": "newSubmission"
+  },
+  {
+    "label": "Quote Builder",
+    "action": "quoteBuilder"
+  },
+  {
+    "label": "Risks Models",
+    "action": "risksModels"
+  },
+  {
+    "label": "Documents Upload",
+    "action": "documentsUpload"
+  }
+] 

@@ -1,6 +1,9 @@
 import { Breadcrumbs } from '../ui/Breadcrumbs'
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline'
 import { BoatLogo } from '../ui/icons/BoatLogo'
+import companyInfoData from '../../mockData/companyInfo.json'
+import attentionItemsData from '../../mockData/attentionItems.json'
+import breadcrumbsData from '../../mockData/breadcrumbs.json'
 
 interface AccountsHeaderProps {
   companyName?: string
@@ -10,38 +13,9 @@ interface AccountsHeaderProps {
   underwriter?: string
 }
 
-export const defaultCompanyInfo: AccountsHeaderProps = {
-  companyName: 'Maritime Logistics Corp',
-  address: '425 Harbor Boulevard, Suite 300, Seattle, WA 98104',
-  accountNumber: '54383',
-  broker: 'Marsh McLennan',
-  underwriter: 'Kate Johnson',
-}
-
-const ATTENTION_ITEMS = {
-  TITLE: 'Needs Attention',
-  MARINE_SURVEY: {
-    TITLE: 'Marine Survey Required',
-    SUBTITLE: 'Scheduled for 06/12/2025',
-    LINK: 'Review details',
-  },
-  LOSS_CONTROL: {
-    TITLE: 'Loss Control Complete',
-    SUBTITLE: 'Last inspection: 02/15/2025',
-    LINK: 'View report',
-  },
-  CLAIMS_REVIEW: {
-    TITLE: 'Claims Review Required',
-    SUBTITLE: '3 open claims // $245,000 TTL',
-    LINK: 'View claims',
-  },
-}
-
-const pages = [
-  { name: 'Dashboard', href: '#', current: false },
-  { name: 'Accounts', href: '#', current: false },
-  { name: 'Maritime Logistics Corp', href: '#', current: true },
-]
+const defaultCompanyInfo = companyInfoData as AccountsHeaderProps
+const ATTENTION_ITEMS = attentionItemsData
+const pages = breadcrumbsData
 
 export const AccountsHeader = ({
   companyName = defaultCompanyInfo.companyName,
@@ -108,41 +82,19 @@ export const AccountsHeader = ({
           </div>
 
           <div className="flex flex-row gap-12 mt-4">
-            <div className="flex flex-col gap-1">
-              <h3 className="text-white text-base">{ATTENTION_ITEMS.MARINE_SURVEY.TITLE}</h3>
-              <p className="text-gray-400 text-xs">{ATTENTION_ITEMS.MARINE_SURVEY.SUBTITLE}</p>
-              <a
-                href="#"
-                className="text-blue-500 hover:text-blue-400 text-xs"
-                aria-label={`${ATTENTION_ITEMS.MARINE_SURVEY.LINK} for ${ATTENTION_ITEMS.MARINE_SURVEY.TITLE}`}
-              >
-                {ATTENTION_ITEMS.MARINE_SURVEY.LINK} →
-              </a>
-            </div>
-
-            <div className="flex flex-col gap-1">
-              <h3 className="text-white text-base">{ATTENTION_ITEMS.LOSS_CONTROL.TITLE}</h3>
-              <p className="text-gray-400 text-xs">{ATTENTION_ITEMS.LOSS_CONTROL.SUBTITLE}</p>
-              <a
-                href="#"
-                className="text-blue-500 hover:text-blue-400 text-xs"
-                aria-label={`${ATTENTION_ITEMS.LOSS_CONTROL.LINK} for ${ATTENTION_ITEMS.LOSS_CONTROL.TITLE}`}
-              >
-                {ATTENTION_ITEMS.LOSS_CONTROL.LINK} →
-              </a>
-            </div>
-
-            <div className="flex flex-col gap-1">
-              <h3 className="text-white text-base">{ATTENTION_ITEMS.CLAIMS_REVIEW.TITLE}</h3>
-              <p className="text-gray-400 text-xs">{ATTENTION_ITEMS.CLAIMS_REVIEW.SUBTITLE}</p>
-              <a
-                href="#"
-                className="text-blue-500 hover:text-blue-400 text-xs"
-                aria-label={`${ATTENTION_ITEMS.CLAIMS_REVIEW.LINK} for ${ATTENTION_ITEMS.CLAIMS_REVIEW.TITLE}`}
-              >
-                {ATTENTION_ITEMS.CLAIMS_REVIEW.LINK} →
-              </a>
-            </div>
+            {ATTENTION_ITEMS.ITEMS.map((item, index) => (
+              <div className="flex flex-col gap-1" key={index}>
+                <h3 className="text-white text-base">{item.TITLE}</h3>
+                <p className="text-gray-400 text-xs">{item.SUBTITLE}</p>
+                <a
+                  href="#"
+                  className="text-blue-500 hover:text-blue-400 text-xs"
+                  aria-label={`${item.LINK} for ${item.TITLE}`}
+                >
+                  {item.LINK} →
+                </a>
+              </div>
+            ))}
           </div>
         </div>
       </div>

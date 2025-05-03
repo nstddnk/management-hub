@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { SearchFilterControls } from '../ui/SearchFilterControls'
 import { DataTable, type DataTableColumn } from '@/components/ui/DataTable'
 import { MoreVertical, Ship, ShieldCheck, ShieldUser, Umbrella } from 'lucide-react'
+import policiesTableData from '../../mockData/policiesTable.json'
 
 type PolicyItem = {
   line: string
@@ -24,78 +25,7 @@ type PolicyItem = {
   }
 }
 
-const mockData: PolicyItem[] = [
-  {
-    line: 'Marine',
-    id: '17030212',
-    effDate: '6/30/2026',
-    expDate: '6/30/2027',
-    status: { label: 'Active', type: 'active' },
-    expiringTech: '$587,500',
-    expiringPremium: '$605,000',
-    renewalToTech: '$610,000',
-    renewalTech: '$620,000',
-    renewalPremium: '$625,000',
-    rateChange: '3.3%',
-    lossRatio: { value: 22, color: 'green' },
-  },
-  {
-    line: 'General',
-    id: '4651092',
-    effDate: '6/30/2026',
-    expDate: '6/30/2027',
-    status: { label: 'Active', type: 'active' },
-    expiringTech: '$160,000',
-    expiringPremium: '$165,000',
-    renewalToTech: '$170,000',
-    renewalTech: '$172,500',
-    renewalPremium: '$175,000',
-    rateChange: '6.1%',
-    lossRatio: { value: 55, color: 'yellow' },
-  },
-  {
-    line: 'Workers',
-    id: '9182371',
-    effDate: 'Pending',
-    expDate: 'Pending',
-    status: { label: 'Pending', type: 'pending' },
-    expiringTech: '$0',
-    expiringPremium: '$0',
-    renewalToTech: '$73,500',
-    renewalTech: '$75,000',
-    renewalPremium: '$75,000',
-    rateChange: null,
-    lossRatio: { value: null, color: null },
-  },
-  {
-    line: 'Umbrella',
-    id: '5274936',
-    effDate: '13/03/2026',
-    expDate: '13/03/2027',
-    status: { label: 'Active', type: 'active' },
-    expiringTech: '$245,000',
-    expiringPremium: '$250,000',
-    renewalToTech: '$267,500',
-    renewalTech: '$270,000',
-    renewalPremium: '$275,000',
-    rateChange: '10.0%',
-    lossRatio: { value: 78, color: 'red' },
-  },
-  {
-    line: '',
-    id: '',
-    effDate: '',
-    expDate: '',
-    status: { label: 'TOTAL (4)', type: 'total' },
-    expiringTech: '$992,500',
-    expiringPremium: '$1,020,000',
-    renewalToTech: '$1,121,000',
-    renewalTech: '$1,137,500',
-    renewalPremium: '$1,150,000',
-    rateChange: '6.9%',
-    lossRatio: { value: 58.3, color: 'yellow' },
-  },
-]
+const mockData = policiesTableData as PolicyItem[]
 
 export const PoliciesTable = () => {
   const [search, setSearch] = useState('')
@@ -219,13 +149,12 @@ export const PoliciesTable = () => {
       label: 'RATE CHANGE',
       render: (item) => (
         <span
-          className={`${
-            item.status.label.startsWith('TOTAL')
-              ? 'text-white'
-              : item.rateChange && parseFloat(item.rateChange) > 5
-                ? 'text-[#EF4444]'
-                : 'text-white'
-          } font-light text-xs`}
+          className={`${item.status.label.startsWith('TOTAL')
+            ? 'text-white'
+            : item.rateChange && parseFloat(item.rateChange) > 5
+              ? 'text-[#EF4444]'
+              : 'text-white'
+            } font-light text-xs`}
           aria-label={
             item.rateChange ? `Rate change: ${item.rateChange}` : 'Rate change not available'
           }
@@ -241,20 +170,18 @@ export const PoliciesTable = () => {
         item.lossRatio.value !== null ? (
           <div
             className={`px-2 py-1 rounded-full inline-flex items-center justify-center font-light text-xs
-                            ${
-                              item.lossRatio.color === 'green'
-                                ? 'bg-[#16A34A]/20 text-[#16A34A]'
-                                : item.lossRatio.color === 'yellow'
-                                  ? 'bg-[#F5D90A]/20 text-[#F5D90A]'
-                                  : 'bg-[#EF4444]/20 text-[#EF4444]'
-                            }`}
-            aria-label={`Loss ratio: ${item.lossRatio.value}%, ${
-              item.lossRatio.color === 'green'
-                ? 'good'
+                            ${item.lossRatio.color === 'green'
+                ? 'bg-[#16A34A]/20 text-[#16A34A]'
                 : item.lossRatio.color === 'yellow'
-                  ? 'moderate'
-                  : 'high'
-            }`}
+                  ? 'bg-[#F5D90A]/20 text-[#F5D90A]'
+                  : 'bg-[#EF4444]/20 text-[#EF4444]'
+              }`}
+            aria-label={`Loss ratio: ${item.lossRatio.value}%, ${item.lossRatio.color === 'green'
+              ? 'good'
+              : item.lossRatio.color === 'yellow'
+                ? 'moderate'
+                : 'high'
+              }`}
           >
             {item.lossRatio.value}%
           </div>

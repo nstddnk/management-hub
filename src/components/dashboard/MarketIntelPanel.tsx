@@ -1,26 +1,12 @@
+import marketUpdatesData from '../../mockData/marketUpdates.json'
+
 type MarketUpdate = {
   color: 'red' | 'yellow' | 'blue'
   text: string
   link: string
 }
 
-const marketUpdates: MarketUpdate[] = [
-  {
-    color: 'red',
-    text: 'Rate hardening in Cyber market - +15% YoY',
-    link: '/news/cyber-market-update',
-  },
-  {
-    color: 'yellow',
-    text: 'New capacity entering Marine market',
-    link: '/news/marine-market-update',
-  },
-  {
-    color: 'blue',
-    text: 'Environmental regulatory changes in CA',
-    link: '/news/environmental-regulations',
-  },
-]
+const marketUpdates = marketUpdatesData as MarketUpdate[]
 
 const getIndicatorColor = (color: MarketUpdate['color']) => {
   switch (color) {

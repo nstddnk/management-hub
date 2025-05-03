@@ -1,13 +1,12 @@
 import { Check, CircleCheck } from 'lucide-react'
+import accountStatusStepsData from '../../mockData/accountStatusSteps.json'
 
-const steps = [
-  { label: 'Submitted', completed: true },
-  { label: 'Review', completed: true },
-  { label: 'Quote', completed: true },
-  { label: 'Bind', completed: true },
-  { label: 'Issue', completed: true },
-  { label: 'Renew', completed: false },
-]
+type AccountStep = {
+  label: string
+  completed: boolean
+}
+
+const steps = accountStatusStepsData as AccountStep[]
 
 export const AccountsStatusAndDocs = () => {
   return (
@@ -39,11 +38,10 @@ export const AccountsStatusAndDocs = () => {
                 aria-current={step.completed && !steps[index + 1]?.completed ? 'step' : undefined}
               >
                 <div
-                  className={`w-9 h-9 md:w-10 lg:w-11 md:h-10 lg:h-11 rounded-full flex items-center justify-center bg-[#1e2233] relative ${
-                    step.completed
-                      ? 'border-2 border-[#16A34A]'
-                      : 'border-2 border-dashed border-[#64748B]'
-                  }`}
+                  className={`w-9 h-9 md:w-10 lg:w-11 md:h-10 lg:h-11 rounded-full flex items-center justify-center bg-[#1e2233] relative ${step.completed
+                    ? 'border-2 border-[#16A34A]'
+                    : 'border-2 border-dashed border-[#64748B]'
+                    }`}
                 >
                   <Check
                     className={`w-5 h-5 md:w-6 md:h-6 ${step.completed ? 'text-[#16A34A]' : 'text-[#64748B]'}`}

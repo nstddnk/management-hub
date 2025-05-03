@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { MoreVertical } from 'lucide-react'
 import { DataTable, type DataTableColumn } from '@/components/ui/DataTable'
 import { Button } from '@heroui/button'
+import workQueueData from '../../mockData/workQueue.json'
+import filterTabsData from '../../mockData/filterTabs.json'
 
 type WorkQueueItem = {
   originator: {
@@ -17,50 +19,7 @@ type WorkQueueItem = {
   created: string
 }
 
-const mockData: WorkQueueItem[] = [
-  {
-    originator: { initials: 'SM', name: 'Sam Masters' },
-    client: { name: 'NAMEX Tech Solutions', type: 'Cyber Liability' },
-    type: 'Underwriter Referral',
-    status: 'New',
-    created: '04/16/2025',
-  },
-  {
-    originator: { initials: 'AW', name: 'Annalise Willis' },
-    client: { name: 'Maritime Logistics Corp', type: 'Marine Cargo' },
-    type: 'Underwriter Referral',
-    status: 'New',
-    created: '04/20/2025',
-  },
-  {
-    originator: { initials: 'PD', name: 'Patrick Devenport' },
-    client: { name: 'GreenField Energy Ltd', type: 'Environmental' },
-    type: 'Loss Control Request',
-    status: 'New',
-    created: '04/16/2025',
-  },
-  {
-    originator: { initials: 'AK', name: 'Ana Killian' },
-    client: { name: 'NorthStar Financial Group', type: 'D&O Liability' },
-    type: 'Underwriter Referral',
-    status: 'Pending Review',
-    created: '04/22/2025',
-  },
-  {
-    originator: { initials: 'AK', name: 'Ana Killian' },
-    client: { name: 'Alliance Healthcare Systems', type: 'Medical Malpractice' },
-    type: 'Email',
-    status: 'Completed',
-    created: '04/28/2025',
-  },
-  {
-    originator: { initials: 'MK', name: 'Me' },
-    client: { name: 'QuantumTech Industries', type: 'Product Liability' },
-    type: 'Email',
-    status: 'Completed',
-    created: '04/20/2025',
-  },
-]
+const mockData = workQueueData as WorkQueueItem[]
 
 type FilterTab = {
   label: string
@@ -69,11 +28,7 @@ type FilterTab = {
 }
 
 export const WorkQueuePanel = () => {
-  const [filterTabs, setFilterTabs] = useState<FilterTab[]>([
-    { label: 'Assigned to me', count: 12, isActive: true },
-    { label: 'Pending Review', count: 8, isActive: false },
-    { label: 'Referrals', count: 3, isActive: false },
-  ])
+  const [filterTabs, setFilterTabs] = useState<FilterTab[]>(filterTabsData as FilterTab[])
 
   const handleTabClick = (clickedLabel: string) => {
     setFilterTabs((tabs) =>

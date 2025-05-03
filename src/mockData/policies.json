@@ -1,0 +1,37 @@
+[
+  {
+    "iconType": "Ship",
+    "iconColor": "text-[#4B7BF9]",
+    "name": "Marine Cargo",
+    "premium": "$625,000",
+    "effectiveDate": "6/30/2026"
+  },
+  {
+    "iconType": "ShieldCheck",
+    "iconColor": "text-[#16A34A]",
+    "name": "General Liability",
+    "premium": "$175,000",
+    "effectiveDate": "6/30/2026"
+  },
+  {
+    "iconType": "ShieldUser",
+    "iconColor": "text-[#9333EA]",
+    "name": "Workers Comp",
+    "premium": "$75,000",
+    "effectiveDate": "---"
+  },
+  {
+    "iconType": "Building2",
+    "iconColor": "text-[#EAB308]",
+    "name": "Property",
+    "premium": "$64,829.83",
+    "effectiveDate": "---"
+  },
+  {
+    "iconType": "Umbrella",
+    "iconColor": "text-[#EF4444]",
+    "name": "Umbrella",
+    "premium": "$275,000",
+    "effectiveDate": "13/03/2026"
+  }
+] 

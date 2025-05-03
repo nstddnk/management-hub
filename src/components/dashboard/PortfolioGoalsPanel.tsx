@@ -1,6 +1,7 @@
 import { CurrencyProgressBar } from '../ui/CurrencyProgressBar'
 import { RenewalProgressBar } from '../ui/RenewalProgressBar'
 import { PortfolioProgressBar } from '../ui/PortfolioProgressBar'
+import portfolioMetricsData from '../../mockData/portfolioMetrics.json'
 
 type PortfolioMetric = {
   label: string
@@ -11,36 +12,7 @@ type PortfolioMetric = {
   variant?: string
 }
 
-const metrics: PortfolioMetric[] = [
-  {
-    label: 'PORTFOLIO LOSS RATIO TARGET',
-    target: '55',
-    current: 48.2,
-    showProgressBar: true,
-    variant: 'loss-ratio',
-  },
-  {
-    label: 'RENEWAL RETENTION',
-    target: '85-90',
-    current: 88,
-    showProgressBar: true,
-    variant: 'renewal',
-  },
-  {
-    label: 'NEW BUSINESS TARGET',
-    target: '$12M',
-    current: 8.1,
-    isCurrency: true,
-    showProgressBar: true,
-  },
-  {
-    label: 'ANNUAL GWP TARGET',
-    target: '$42M',
-    current: 28.4,
-    isCurrency: true,
-    showProgressBar: true,
-  },
-]
+const metrics = portfolioMetricsData as PortfolioMetric[]
 
 const MetricLabel = ({ label }: { label: string }) => (
   <div className="flex flex-col gap-1">

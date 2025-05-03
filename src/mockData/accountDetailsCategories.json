@@ -1,0 +1,25 @@
+[
+  {
+    "id": 1,
+    "title": "DECISION SUPPORT",
+    "count": 4,
+    "items": [
+      { "label": "Winnability", "id": "winnability" },
+      { "label": "Exposure Review & Suggested Coverage", "id": "exposure" },
+      { "label": "Portfolio Strategy Alignment", "id": "strategy" },
+      { "label": "Broker Analytics", "id": "broker" }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "RISK ASSESSMENT",
+    "count": 6,
+    "items": []
+  },
+  {
+    "id": 3,
+    "title": "DOCUMENTS AND COMPLIANCE",
+    "count": 2,
+    "items": []
+  }
+] 

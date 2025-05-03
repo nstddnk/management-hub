@@ -5,23 +5,29 @@ import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
 import { Database, UsersRound, FileSymlink, Building2, Goal, KeyRound, House } from 'lucide-react'
 import { InputField } from '@/components/ui/InputField'
 import { Button } from '@heroui/button'
+import navItemsData from '../../mockData/navItems.json'
+import userWelcomeData from '../../mockData/userWelcome.json'
 
-const navItems = [
-  { href: '/dashboard', label: 'Dashboard', icon: House },
-  { href: '/accounts', label: 'Accounts', icon: Database },
-  { href: '/brokers', label: 'Brokers', icon: UsersRound },
-  { href: '/submissions', label: 'Submissions', icon: FileSymlink },
-  { href: '/organizations', label: 'Organizations', icon: Building2 },
-  { href: '/goals', label: 'Goals & Rules', icon: Goal },
-  { href: '/admin', label: 'Admin', icon: KeyRound },
-  { href: '/admin2', label: 'Admin', icon: KeyRound },
-  { href: '/admin3', label: 'Admin', icon: KeyRound },
-  { href: '/admin4', label: 'Admin', icon: KeyRound },
-  { href: '/admin5', label: 'Admin', icon: KeyRound },
-  { href: '/admin6', label: 'Admin', icon: KeyRound },
-  { href: '/admin7', label: 'Admin', icon: KeyRound },
-  { href: '/admin8', label: 'Admin', icon: KeyRound },
-]
+type NavItem = {
+  href: string
+  label: string
+  icon: string
+}
+
+const iconMap = {
+  House,
+  Database,
+  UsersRound,
+  FileSymlink,
+  Building2,
+  Goal,
+  KeyRound
+}
+
+const navItems = navItemsData.map(item => ({
+  ...item,
+  icon: iconMap[item.icon as keyof typeof iconMap]
+}))
 
 export const Navbar = () => {
   const location = useLocation()
@@ -48,7 +54,7 @@ export const Navbar = () => {
         <div className="max-w-[1920px] mx-auto px-8">
           <div className="flex justify-between items-center h-20">
             <div className="text-2xl font-normal" role="status">
-              Hi Arthur, welcome! You have 12 open tasks.
+              Hi {userWelcomeData.userName}, welcome! You have {userWelcomeData.openTasks} open tasks.
             </div>
             <div className="flex items-center gap-3">
               <InputField
@@ -65,7 +71,7 @@ export const Navbar = () => {
                 aria-label="User profile"
                 tabIndex={0}
               >
-                A
+                {userWelcomeData.userName.charAt(0)}
               </div>
             </div>
           </div>
@@ -92,10 +98,9 @@ export const Navbar = () => {
                     aria-controls={`${label}-panel`}
                     className={`
                       flex items-center gap-2 px-4 py-2 rounded-full border whitespace-nowrap transition-all duration-150
-                      ${
-                        isActive
-                          ? 'bg-nav-active border-nav-active text-white'
-                          : 'bg-[#0A0F1A] border-[#1E2737] text-white hover:bg-[#1E2737]'
+                      ${isActive
+                        ? 'bg-nav-active border-nav-active text-white'
+                        : 'bg-[#0A0F1A] border-[#1E2737] text-white hover:bg-[#1E2737]'
                       }
                     `}
                   >

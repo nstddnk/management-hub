@@ -2,6 +2,7 @@ import { DataTable, type DataTableColumn } from '@/components/ui/DataTable'
 import { MoreVertical } from 'lucide-react'
 import { Button } from '@heroui/button'
 import { InputField } from '@/components/ui/InputField'
+import accountsData from '../../mockData/accounts.json'
 
 type AccountItem = {
   name: string
@@ -27,64 +28,7 @@ type AccountItem = {
   }
 }
 
-const mockData: AccountItem[] = [
-  {
-    name: 'NAMEX Tech Solutions',
-    type: 'Large Enterprise',
-    line: 'D&O Liability',
-    broker: 'Willis Towers',
-    renewalDate: '04/16/2025',
-    premium: '$2.3M',
-    ratedPremium: '$2.8M',
-    lossRatio: { value: 32, color: 'green' },
-    appetite: 'HIGH',
-    status: { label: 'Active', type: 'active' },
-    triage: 180,
-    winnability: { score: 4, label: 'Very Strong' },
-  },
-  {
-    name: 'Alliance Healthcare Systems',
-    type: 'Mid Market',
-    line: 'Medical Malpractice',
-    broker: 'Aon Risk',
-    renewalDate: '06/30/2025',
-    premium: '$1.7M',
-    ratedPremium: '$1.9M',
-    lossRatio: { value: 38, color: 'yellow' },
-    appetite: 'MEDIUM',
-    status: { label: 'Under review', type: 'review' },
-    triage: 165,
-    winnability: { score: 4, label: 'Strong' },
-  },
-  {
-    name: 'Maritime Logistics Corp',
-    type: 'Shipping/Logistics',
-    line: 'Marine Cargo',
-    broker: 'Marsh McLennan',
-    renewalDate: '09/05/2025',
-    premium: '$875K',
-    ratedPremium: '$920K',
-    lossRatio: { value: 25, color: 'green' },
-    appetite: 'HIGH',
-    status: { label: 'Active', type: 'active' },
-    triage: 182,
-    winnability: { score: 4, label: 'Very Strong' },
-  },
-  {
-    name: 'GreenField Energy Ltd',
-    type: 'Energy Sector',
-    line: 'Environmental Liability',
-    broker: 'Aon Risk',
-    renewalDate: '07/22/2025',
-    premium: '$1.2M',
-    ratedPremium: '$1.4M',
-    lossRatio: { value: 67, color: 'red' },
-    appetite: 'CAUTIOUS',
-    status: { label: 'Under review', type: 'review' },
-    triage: 158,
-    winnability: { score: 4, label: 'Medium' },
-  },
-]
+const mockData = accountsData as AccountItem[]
 
 export const AccountsTable = () => {
   const columns: DataTableColumn<AccountItem>[] = [
